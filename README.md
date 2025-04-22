@@ -2,6 +2,46 @@
 
 ## Kuvaus
 
+Palvelu elokuvien arvostelua varten.
+
+- home-page : lista elokuvista apin kautta, tallennettu databaseen collectionsiin "movies". napilla painamalla näkee jo kirjoitetut arvostelut. napista painamalla voi kirjoittaa arvostelun (user). nappi josta pääsee kirjautumaan useriksi ja näkee sen user-sivun
+- user-page : näkee arvostellut elokuvat, voi muokata niitä, ja poistaa
+
+public:
+näkee elokuva listan ja näkee arvostelut. ei pysty kirjottamaan
+
+users:
+pystyy kirjoittamaan, lukemaan, poistamaan omat, muokkaamaan omia
+
+extrat:
+admin, käyttäjä ja ehkä sivu, nakee ja pystyy poistamaan kaiken
+
+Tehtävät:
+
+1. users collection
+   - username: String
+   - password: String
+   - id: MongoDB generoima
+2. movies collection
+   - nimi: String
+   - julkaisuvuosi: Date
+   - kategoria: String
+   - kuvaus: String
+   - id: MongoDB generoima
+3. reviews collection
+   - movie id: viittaus mongodb collectionii "movies" ja kyseiseen elokuvaan (id)
+   - user id: viittaus mongodb collectionii "users" ja kyseiseen käyttäjään (id)
+   - rating: Number
+   - comment: String
+   - created at: Date
+   - id: MongoDB generoima
+
+Työnjako:
+reviews reitit, crud operaatiot ja schema
+moviedb api käyttöönotto ja testaus. ei tarvitse tallentaa tietokantaan vielä
+nähtäis handlebars sivulla mongodb dummy dataa
+käyttäjä systeemi, miten saadaan erotettua public/user ja selain muistaa, sisäänkirjautuminen
+
 ## Moduulit
 
 npm install express
