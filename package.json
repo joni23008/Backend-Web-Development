@@ -11,7 +11,7 @@
     "url": "git+https://github.com/joni23008/Backend-Web-Development.git"
   },
   "license": "ISC",
-  "author": "",
+  "author": "Teemu Tupola, Joni Mitronen, Niko Laaksonen",
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
