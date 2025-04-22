@@ -2,21 +2,21 @@
 
 ## Kuvaus
 
-Palvelu elokuvien arvostelua varten.
+- Palvelu elokuvien arvostelua varten.
 
-- home-page : lista elokuvista apin kautta, tallennettu databaseen collectionsiin "movies". napilla painamalla näkee jo kirjoitetut arvostelut. napista painamalla voi kirjoittaa arvostelun (user). nappi josta pääsee kirjautumaan useriksi ja näkee sen user-sivun
-- user-page : näkee arvostellut elokuvat, voi muokata niitä, ja poistaa
+* home-page : lista elokuvista apin kautta, tallennettu databaseen collectionsiin "movies". napilla painamalla näkee jo kirjoitetut arvostelut. napista painamalla voi kirjoittaa arvostelun (user). nappi josta pääsee kirjautumaan useriksi ja näkee sen user-sivun
+* user-page : näkee arvostellut elokuvat, voi muokata niitä, ja poistaa
 
-public:
-näkee elokuva listan ja näkee arvostelut. ei pysty kirjottamaan
+- public:
+  näkee elokuva listan ja näkee arvostelut. ei pysty kirjottamaan
 
-users:
-pystyy kirjoittamaan, lukemaan, poistamaan omat, muokkaamaan omia
+- users:
+  pystyy kirjoittamaan, lukemaan, poistamaan omat, muokkaamaan omia
 
-extrat:
-admin, käyttäjä ja ehkä sivu, nakee ja pystyy poistamaan kaiken
+- extrat:
+  admin, käyttäjä ja ehkä sivu, nakee ja pystyy poistamaan kaiken
 
-Tehtävät:
+## Tietokanta-rakenne
 
 1. users collection
    - username: String
@@ -36,19 +36,20 @@ Tehtävät:
    - created at: Date
    - id: MongoDB generoima
 
-Työnjako:
-JONI: reviews reitit, crud operaatiot ja schema
-TEEMU: moviedb api käyttöönotto ja testaus. ei tarvitse tallentaa tietokantaan vielä
-TEEMU: nähtäis handlebars sivulla mongodb dummy dataa
-NIKO: käyttäjä systeemi, miten saadaan erotettua public/user ja selain muistaa, sisäänkirjautuminen
+## Työnjako:
+
+- JONI: reviews reitit, crud operaatiot ja schema
+- TEEMU: moviedb api käyttöönotto ja testaus. ei tarvitse tallentaa tietokantaan vielä
+- TEEMU: nähtäis handlebars sivulla mongodb dummy dataa
+- NIKO: käyttäjä systeemi, miten saadaan erotettua public/user ja selain muistaa, sisäänkirjautuminen
 
 ## Moduulit
 
-npm install express
-npm install express-handlebars
-npm install dotenv
-npm install mongoose
-npm install nodemon --save-dev
+- npm install express
+- npm install express-handlebars
+- npm install dotenv
+- npm install mongoose
+- npm install nodemon --save-dev
 
 ## Elokuva API
 
