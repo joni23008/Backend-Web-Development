@@ -1,0 +1,31 @@
+{
+  "name": "backend-web-development",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/joni23008/Backend-Web-Development#readme",
+  "bugs": {
+    "url": "https://github.com/joni23008/Backend-Web-Development/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joni23008/Backend-Web-Development.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node backend-web-development",
+    "dev": "nodemon backend-web-development",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "express-handlebars": "^8.0.2",
+    "mongoose": "^8.13.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}

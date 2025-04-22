@@ -1,0 +1,12 @@
+user:
+haluan nähdä listan elokuvista joita voi arvioida
+haluan arvostella elokuvan ja antaa sille tähtiarvioinnin
+haluan nähdä kaikki arvostellut elokuvani
+haluan muuttaa jo arvostelemaani elokuvan arviointia
+haluan poistaa arvosteluni kokonaan elokuvasta
+haluan kirjautua sisään omalla käyttäjällä
+haluan nähdä muiden arvostelut kun tarkistelen elokuvaa
+haluan päivitetyn listan elokuvista viikon välein
+
+admin:
+haluan että palvelu on avoin vain rekisteröityneille käyttäjille

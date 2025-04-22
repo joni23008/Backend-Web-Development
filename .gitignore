@@ -1,1 +1,8 @@
-# Tänne jotai mitä tarvii
+# Tänne jotai mitä tarvii ignooraa
+
+# Ignore all node_modules folders recursively
+**/node_modules/
+
+# Ignore all .env files
+.env
+**/.env
