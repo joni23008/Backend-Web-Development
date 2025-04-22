@@ -37,10 +37,10 @@ Tehtävät:
    - id: MongoDB generoima
 
 Työnjako:
-reviews reitit, crud operaatiot ja schema
-moviedb api käyttöönotto ja testaus. ei tarvitse tallentaa tietokantaan vielä
-nähtäis handlebars sivulla mongodb dummy dataa
-käyttäjä systeemi, miten saadaan erotettua public/user ja selain muistaa, sisäänkirjautuminen
+JONI: reviews reitit, crud operaatiot ja schema
+TEEMU: moviedb api käyttöönotto ja testaus. ei tarvitse tallentaa tietokantaan vielä
+TEEMU: nähtäis handlebars sivulla mongodb dummy dataa
+NIKO: käyttäjä systeemi, miten saadaan erotettua public/user ja selain muistaa, sisäänkirjautuminen
 
 ## Moduulit
 
