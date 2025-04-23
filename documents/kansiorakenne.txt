@@ -1,0 +1,42 @@
+project-root/
+├── 🛑 .gitignore                   // 🛑 Tells Git what to ignore globally across the project
+├── 🔐 .env                         // 🔒 Holds sensitive or environment-specific values, do not put in config folder!
+├── 🚀 index.js                     // 🚀 Entry point of the app
+├── 📜 package.json                 // 📜 Tracks dependencies, metadata, holds scripts, defines main entry point
+├── 📦 node_modules                 // 📦 All installed npm modules
+├── 🌐 public/                      // 🌐 Static assets (HTML, CSS, client JS, images, videos, audio)
+│   ├── 🧾 html/
+│   ├── 🎨 css/
+│   ├── 💻 js/
+│   ├── 🖼️ images/
+│   ├── 🎞️ videos/
+│   └── 🎵 audio/
+├── 🧭 routes/                      // 🧭 Express routes
+│   └── 📄 userRoutes.js
+├── 🎮 controllers/                 // 🎮 Controller classes or functions
+│   └── 📄 UserController.js
+├── 🧬 models/                      // 🧬 Data models (classes or schemas)
+│   └── 📄 User.js
+├── 🖼️ views/                       // 🖼️ Handlebars templates
+│   ├── 🧱 layouts/                 // 🧱 Layouts (e.g. main.handlebars), jossa partiaalit käytössä
+│   |   └── 📄 main.handlebars      // Main layout (common HTML structure).
+│   ├── 🧩 partials/                // 🧩 Partials (e.g. header, navbar, footer)
+│   |   └── 📄 header.handlebars
+│   |   └── 📄 footer.handlebars
+│   |   └── 📄 form.handlebars
+│   |   └── 📄 navbar.handlebars
+│   ├── 📄 home.handlebars          // Example pages, sivujen sisältö (e.g. home, contact, products etc.)
+│   └── 👤 user/                    // 👤 View pages grouped by feature
+│       └── 📄 profile.handlebars
+├── 🛠️ services/                    // 🛠️ Business logic classes (e.g. email sending, payments)
+│   └── 📄 EmailService.js
+├── 🧰 utils/                       // 🧰 Custom utility functions
+│   └── 📄 dateFormatter.js
+├── 🧮 lib/                         // 🧮 Reusable modules/classes/tools
+│   └── 📄 CustomLogger.js
+├── 🧷 middlewares/                 // 🧷 Express middleware (e.g., auth, error handling)
+│   └── 📄 auth.js
+├── ⚙️ config/                      // ⚙️ Configuration files (e.g., db.js, constants)
+│   └── 📄 db.js
+├── 🧪 tests/                       // 🧪 Unit and integration tests
+│   └── 🧾 user.test.js
