@@ -10,7 +10,7 @@ require('dotenv').config();
 const app = express();
 
 // DB connection
-require('./config/db')();
+require("./config/db")();
 
 // Passport config
 require('./config/passport')(passport);
@@ -56,7 +56,7 @@ app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views'));
 
 // Routes
-const mainRoutes = require('./routes/index');
-app.use('/', mainRoutes);
+const mainRoutes = require("./routes/index");
+app.use("/", mainRoutes);
 
 module.exports = app;

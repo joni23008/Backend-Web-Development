@@ -1,4 +1,3 @@
-
 const express  = require('express');
 const router   = express.Router();
 const dbRouter = require('./DB');
@@ -12,9 +11,6 @@ const homeRoutes = require('./home')
 
 router.use('/', homeRoutes);
 router.use('/auth', authRoutes);
-
-
-
 
 
 module.exports = router;
