@@ -1,17 +1,17 @@
-const express = require('express');
-const router  = express.Router();
-const Movie   = require('../models/Movies');
+const express = require("express");
+const router = express.Router();
+const Movie = require("../models/Movies");
 
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const movies = await Movie.find().lean();
-    res.render('DBTesti', {
-      title:  'DB Page',
-      movies
+    res.render("DBTesti", {
+      title: "DB Page",
+      movies,
     });
   } catch (err) {
     console.error(err);
-    res.status(500).send('Server error');
+    res.status(500).send("Server error");
   }
 });
 
