@@ -46,58 +46,67 @@ const readReviewById = async (req, res) => {
 
 // POST add new
 const createReview = async (req, res) => {
+  // Theory of how to create a review:
+  // 1. User logs in → You store session/cookie.
+  // 2. User clicks “Write Review” on a movie →
+  // The movie's ID is part of the button/link/form as it is part of the movie object rendered to frontend.
+  // 3. Form submits → Sends rating + comment + movie ID to backend.
+
   // for debugging
   console.log("Got a POST request to add a review");
   console.log(req.body);
 
-  // Theory of how to create a review:
-  // 1. User logs in → You store session/cookie.
-  // 2. User clicks “Write Review” on a movie → The movie's ID is part of the button/link/form as it is part of the movie object rendered to frontend.
-  // 3. Form submits → Sends rating + comment + movie ID to backend.
-  // 4. Backend reads user ID from session/cookie. You can access it via req.user._id if you use a session middleware like express-session or passport.js.
+  const { movie, rating, comment } = req.body;
+  // 4. Backend reads user ID from session/cookie.
+  // You can access it via req.user._id if you use a session middleware like express-session or passport.js.
+  const user = req.user._id;
+  // for debugging
+  console.log(user);
+
   // 5. Backend creates review which looks something like this:
-  // const newReview = new Review({
-  //   user: req.user._id, // from session/cookie
-  //   movie: req.body.movie, // from form submission
-  //   rating: req.body.rating, // from form submission
-  //   comment: req.body.comment, // from form submission
-  // });
-
-  // Hardcoded test values:
-  const dummyUserId = new mongoose.Types.ObjectId("68077a175ecd59fe75d919f0"); // replace with a real user ID from your DB
-  const dummyMovieId = new mongoose.Types.ObjectId("68077b255ecd59fe75d919f2"); // replace with a real movie ID
-
   const newReview = new Review({
-    user: dummyUserId,
-    movie: dummyMovieId,
-    rating: 3,
-    comment: "This is a hardcoded review for testing.",
+    user, // expects a valid user ID as a string
+    movie, // expects a valid movie ID as a string
+    rating, // expects a number (1-5)
+    comment, // optional, can be string
   });
+
+  // for debugging
+  console.log(newReview);
 
   await newReview.save();
 
-  // response
+  // respond with a redirect to the home page
+  res.redirect("/");
+  // respond with JSON (for debugging)
+  // res.status(200).json({
+  //   message: "Success",
+  //   review: newReview,
+  // });
+};
+
+// POST add new dummy
+const createReviewDummy = async (req, res) => {
+  console.log("Got a POST request to add a dummy review");
+  console.log(req.body);
+
+  const { user, movie, rating, comment } = req.body;
+
+  const newReview = new Review({
+    user, // expects a valid user ID as a string
+    movie, // expects a valid movie ID as a string
+    rating, // expects a number (1-5)
+    comment, // optional, can be string
+  });
+  // for debugging
+  console.log(newReview);
+
+  await newReview.save();
+
   res.status(200).json({
     message: "Success",
     review: newReview,
   });
-
-  //   try {
-  //     const { name, price, inStock, harvestDate, nutrition } = req.body;
-
-  //     const newFruit = new Fruit({
-  //       name,
-  //       price,
-  //       inStock: inStock === "true",
-  //       harvestDate: new Date(harvestDate),
-  //       nutrition,
-  //     });
-
-  //     await newFruit.save();
-  //     res.redirect("/fruits");
-  //   } catch (error) {
-  //     res.status(400).json({ message: error.message });
-  //   }
 };
 
 // PATCH update by ID
@@ -157,6 +166,7 @@ module.exports = {
   readAllReviews,
   readReviewById,
   createReview,
+  createReviewDummy,
   updateReviewById,
   deleteReviewById,
 };

@@ -9,6 +9,6 @@ const reviewRoutes = require("./reviewRoutes");
 router.use("/", homeRoutes);
 router.use("/auth", authRoutes);
 router.use("/DB", dbRouter);
-router.use("/api/review", reviewRoutes);
+router.use("/review", reviewRoutes);
 
 module.exports = router;

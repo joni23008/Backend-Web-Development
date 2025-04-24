@@ -1,0 +1,33 @@
+{{! movie-list.handlebars }}
+<ul>
+  {{#each movies}}
+    <li>
+      <strong>{{Name}}</strong> ({{Year}}) — {{category}}
+      <p>{{Description}}</p>
+
+      <!-- Toggle button -->
+      <button onclick="toggleReviewForm('{{_id}}')">Write Review</button>
+
+      <!-- Container for the form -->
+      <div id="review-form-{{_id}}" class="review-form-container hidden">
+        {{> review-form movieId=_id }}
+      </div>
+    </li>
+  {{/each}}
+</ul>
+
+{{!-- tehää toinen nappi mist painamalla listautuu kaikki reviewit kyseisestä leffasta --}}
+
+{{!-- In your main layout (or directly in your Handlebars file), include a small script to toggle the form: --}}
+<script>
+  function toggleReviewForm(movieId) {
+    const form = document.getElementById(`review-form-${movieId}`);
+    form.classList.toggle('hidden');
+  }
+</script>
+
+<style>
+  .hidden {
+    display: none;
+  }
+</style>

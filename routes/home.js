@@ -1,12 +1,14 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
+const Movie = require("../models/Movies");
 
-router.get('/', (req, res) => {
+router.get("/", async (req, res) => {
+  const movies = await Movie.find().lean();
   if (req.user) {
     const user = req.user.toObject ? req.user.toObject() : req.user;
-    res.render('home', { title: 'Home Page', user });
+    res.render("home", { title: "Home Page", user, movies });
   } else {
-    res.render('home', { title: 'Home Page' });
+    res.render("home", { title: "Home Page", movies });
   }
 });
 

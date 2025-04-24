@@ -10,6 +10,7 @@ const reviewController = require("../controllers/ReviewController");
 router.get("/", reviewController.readAllReviews);
 router.get("/:id", reviewController.readReviewById);
 router.post("/", reviewController.createReview);
+router.post("/dummy", reviewController.createReviewDummy);
 router.patch("/:id", reviewController.updateReviewById);
 router.delete("/:id", reviewController.deleteReviewById);
 
