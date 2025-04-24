@@ -5,12 +5,7 @@
 {{#if user}}  <!-- Check if there is a logged-in user -->
   <h1>Welcome, {{user.username}}!</h1>
   <a href="/auth/logout">Logout</a>  <!-- A logout link -->
-  <form method="POST" action="/auth/change-password">
-    <input type="password" name="currentPassword" placeholder="Current Password" required>
-    <input type="password" name="newPassword" placeholder="New Password" required>
-    <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
-    <button type="submit">Vaihda salasana</button>
-  </form>
+  
 {{else}}  <!-- If no user is logged in -->
   <h1>Welcome, Guest!</h1>
   <a href="/auth/login">Login</a> | <a href="/auth/register">Register</a>
