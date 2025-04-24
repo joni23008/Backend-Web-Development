@@ -59,5 +59,34 @@ router.get('/logout', (req, res) => {
   });
 });
 
+//Change password
+router.post('/change-password', async (req,res) => {
+  const {currentPassword, newPassword, confirmPassword} = req.body;
+
+  if (!req.isAuthenticated()) {
+    return res.redirect('/login');
+  };
+
+  if (newPassword !== confirmPassword) {
+    req.flash('error', 'Passwords are not matching');
+    return res.redirect('/')
+  };
+
+  const user = await User.findById(req.user._id);
+
+  const isMatch = await bcrypt.compare(currentPassword, user.password);
+  if (!isMatch) {
+    req.flash('error', 'Wrong password')
+    return res.redirect('/')
+  };
+
+  const hashedPassword = await bcrypt.hash(newPassword, 10);
+  user.password = hashedPassword;
+  await user.save();
+  
+  req.flash('success', 'Password has been changed')
+  res.redirect('/')
+});
+
 module.exports = router;
 
