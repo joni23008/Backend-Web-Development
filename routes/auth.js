@@ -14,6 +14,12 @@ router.get('/register', (req, res) => {
 router.post('/register', async (req, res) => {
   const { username, password } = req.body;
 
+  // Check password length
+  if(!password || password.length < 6 || password.length > 32){
+    req.flash('error', 'Password length has to be between 6 and 32 characters');
+    return res.redirect('/auth/register');
+  };
+
   // Check if user already exists
   const existingUser = await User.findOne({ username });
   if (existingUser) {
@@ -63,10 +69,22 @@ router.get('/logout', (req, res) => {
 router.post('/change-password', async (req,res) => {
   const {currentPassword, newPassword, confirmPassword} = req.body;
 
+  //Check password length
+  if(!currentPassword || currentPassword.length < 6 || currentPassword.length > 32){
+    req.flash('error', 'Password length has to be between 6 and 32 characters');
+    return res.redirect('/profile');
+  };
+  if(!newPassword || newPassword.length < 6 || newPassword.length > 32){
+    req.flash('error', 'Password length has to be between 6 and 32 characters');
+    return res.redirect('/profile');
+  };
+
+  // Check if user is logged in
   if (!req.isAuthenticated()) {
     return res.redirect('/login');
   };
 
+  // Check that new password and confirmation password matches
   if (newPassword !== confirmPassword) {
     req.flash('error', 'Passwords are not matching');
     return res.redirect('/')
@@ -74,6 +92,7 @@ router.post('/change-password', async (req,res) => {
 
   const user = await User.findById(req.user._id);
 
+  // Check that given password and password from db matches
   const isMatch = await bcrypt.compare(currentPassword, user.password);
   if (!isMatch) {
     req.flash('error', 'Wrong password')
