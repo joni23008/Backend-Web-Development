@@ -1,43 +1,24 @@
-{{! movie-list.handlebars }}
 <ul>
   {{#each movies}}
     <li>
       <strong>{{Name}}</strong> ({{Year}}) — {{category}}
       <p>{{Description}}</p>
 
-      <!-- Toggle button for form -->
+      <!-- Toggle Review Form Button -->
       <button onclick="toggleReviewForm('{{_id}}')">Write Review</button>
-      <!-- Toggle button for list-->
-      <button onclick="toggleReviewList('{{_id}}')">Show Reviews</button>
-      <!-- Container for the form -->
+
+      <!-- Review Form -->
       <div id="review-form-{{_id}}" class="review-form-container hidden">
         {{> review-form movieId=_id }}
       </div>
-      <!-- Container for the list -->
-      <div id="review-list-{{_id}}" class="review-list-container hidden">
-        {{!-- i need to use ../reviews to access the parent context. In this case all of the reviews outside this loop--}}
-        {{> review-list reviews=../reviews movieId=_id }}
-      </div>
 
+      <!-- Toggle Show Reviews Button -->
+      {{!-- Check the review-list.js file from public folder and review-list.css--}}
+      <button onclick="fetchReviews('{{_id}}')">Show Reviews</button>
+
+      <!-- Reviews List -->
+      <div id="reviews-list-{{_id}}" class="reviews-container hidden"></div>
     </li>
   {{/each}}
 </ul>
 
-
-{{!-- In your main layout (or directly in your Handlebars file), include a small script to toggle the form: --}}
-<script>
-  function toggleReviewForm(movieId) {
-    const form = document.getElementById(`review-form-${movieId}`);
-    form.classList.toggle('hidden');
-  }
-    function toggleReviewList(movieId) {
-    const list = document.getElementById(`review-list-${movieId}`);
-    list.classList.toggle('hidden');
-  }
-</script>
-
-<style>
-  .hidden {
-    display: none;
-  }
-</style>

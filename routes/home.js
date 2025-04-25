@@ -1,16 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const Movie = require("../models/Movies");
-const Review = require("../models/Review");
 
 router.get("/", async (req, res) => {
+  // Fetch all movies
   const movies = await Movie.find().lean();
-  const reviews = await Review.find().lean().populate("user").populate("movie");
   if (req.user) {
     const user = req.user.toObject ? req.user.toObject() : req.user;
-    res.render("home", { title: "Home Page", user, movies, reviews });
+    res.render("home", { title: "Home Page", user, movies });
   } else {
-    res.render("home", { title: "Home Page", movies, reviews });
+    res.render("home", { title: "Home Page", movies });
   }
 });
 

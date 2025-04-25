@@ -47,6 +47,50 @@ const readReviewById = async (req, res) => {
   });
 };
 
+// GET all by movie ID
+const readReviewsByMovie = async (req, res) => {
+  // for debugging
+  console.log("Got a GET request for all reviews by movie ID");
+  console.log(req.params.movieId);
+  // find all by movie ID, from the database
+  const reviews = await Review.find({ movie: req.params.movieId })
+    .populate("user", "username -_id")
+    .populate("movie", "Name -_id");
+  // check if no review was found with the given ID (or it didn’t exist)
+  if (!reviews) {
+    return res.status(404).json({ message: "Not found" });
+  }
+  // response
+  res.status(200).json({
+    success: true,
+    message: "GET request completed successfully, all reviews found",
+    total: reviews.length,
+    data: reviews,
+  });
+};
+
+// GET all by user ID
+const readReviewsByUser = async (req, res) => {
+  // for debugging
+  console.log("Got a GET request for all reviews by user ID");
+  console.log(req.params.userId);
+  // find all by user ID, from the database
+  const reviews = await Review.find({ user: req.params.userId })
+    .populate("user", "username -_id")
+    .populate("movie", "Name -_id");
+  // check if no review was found with the given ID (or it didn’t exist)
+  if (!reviews) {
+    return res.status(404).json({ message: "Not found" });
+  }
+  // response
+  res.status(200).json({
+    success: true,
+    message: "GET request completed successfully, all reviews found",
+    total: reviews.length,
+    data: reviews,
+  });
+};
+
 // POST add new, does not work with Postman, becuse of the session/cookie
 const createReview = async (req, res) => {
   // for debugging
@@ -162,6 +206,8 @@ const deleteReviewById = async (req, res) => {
 module.exports = {
   readAllReviews,
   readReviewById,
+  readReviewsByMovie,
+  readReviewsByUser,
   createReview,
   createReviewDummy,
   updateReviewById,

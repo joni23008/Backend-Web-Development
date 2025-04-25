@@ -14,8 +14,10 @@ router.patch("/:id", ensureLoggedIn, reviewController.updateReviewById);
 router.delete("/:id", ensureLoggedIn, reviewController.deleteReviewById);
 
 // Anyone can read. Postman works here.
-router.get("/", reviewController.readAllReviews);
+router.get("/movie/:movieId", reviewController.readReviewsByMovie);
+router.get("/user/:userId", reviewController.readReviewsByUser);
 router.get("/:id", reviewController.readReviewById);
+router.get("/", reviewController.readAllReviews);
 
 // For testing, anyone can create a dummy review. Postman works here.
 router.post("/dummy", reviewController.createReviewDummy);
