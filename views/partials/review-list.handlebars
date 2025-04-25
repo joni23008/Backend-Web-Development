@@ -1,0 +1,27 @@
+{{! review-list.handlebars }}
+<ul>
+  {{#each reviews}}
+    {{#if (eq this.movie._id ../movieId)}}
+      <li>
+        <p><strong>User: {{user.username}}</strong></p>
+        <p>Rating: {{rating}}</p>
+        <p>Comment: {{comment}}</p>
+        <p><em>Created: {{createdAt}}</em></p>
+      </li>
+    {{/if}}
+  {{/each}}
+</ul>
+
+
+
+{{!-- <ul>
+  {{#each reviews}}
+    <li>
+      <p><strong>User: {{user.username}}</strong></p>
+      <p>Rating: {{rating}}</p>
+      <p>Comment: {{comment}}</p>
+      <p>Created: {{createdAt}}</p>
+      <p>Updated: {{updatedAt}}</p>
+    </li>
+  {{/each}}
+</ul> --}}

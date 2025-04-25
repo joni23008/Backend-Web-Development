@@ -54,6 +54,10 @@ app.engine(
     defaultLayout: "main",
     layoutsDir: path.join(__dirname, "views/layouts"),
     partialsDir: path.join(__dirname, "views", "partials"),
+    // for comparing objects in handlebars
+    helpers: {
+      eq: (a, b) => a.toString() === b.toString(),
+    },
   })
 );
 app.set("view engine", "handlebars");
