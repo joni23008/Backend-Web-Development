@@ -1,4 +1,3 @@
-// models/TmdbMovie.js
 const mongoose = require('mongoose');
 
 const tmdbMovieSchema = new mongoose.Schema({

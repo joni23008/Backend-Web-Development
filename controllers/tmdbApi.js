@@ -1,4 +1,3 @@
-// controllers/tmdbApi.js
 const axios     = require('axios');
 const TmdbMovie = require('../models/TmdbMovie');
 
