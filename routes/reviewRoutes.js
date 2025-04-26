@@ -8,14 +8,14 @@ const { ensureLoggedIn } = require("../middlewares/checkAuthentication");
 // It uses Express Router to handle HTTP requests for CRUD operations.
 // It imports the reviewController which contains the logic for handling these requests.
 
-// Only logged-in users can create, update, or delete. Postman does not work here.
+// Only logged-in users can read their own reviews, create, update, or delete. Postman does not work here.
+router.get("/user/:userId", ensureLoggedIn, reviewController.readReviewsByUser);
 router.post("/", ensureLoggedIn, reviewController.createReview);
 router.patch("/:id", ensureLoggedIn, reviewController.updateReviewById);
 router.delete("/:id", ensureLoggedIn, reviewController.deleteReviewById);
 
-// Anyone can read. Postman works here.
+// Anyone can read all reviews, by id or by movie. Postman works here.
 router.get("/movie/:movieId", reviewController.readReviewsByMovie);
-router.get("/user/:userId", reviewController.readReviewsByUser);
 router.get("/:id", reviewController.readReviewById);
 router.get("/", reviewController.readAllReviews);
 
