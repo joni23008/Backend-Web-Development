@@ -7,9 +7,10 @@
       {{!-- Buttons --}}
       <!-- Toggle Review Form Button -->
       <button onclick="toggleReviewForm('{{_id}}')">Write Review</button>
-      <!-- Toggle Show Reviews Button -->
-      <button class="api-button" data-endpoint="/review/movie/{{_id}}" data-target="#reviews-list-{{_id}}">Show Reviews</button>
+      <!-- Toggle Show All Reviews Button -->
+      <button class="api-button" data-endpoint="/review/movie/{{_id}}" data-target="#reviews-list-{{_id}}">Show All Reviews</button>
       {{!-- More buttons in the future? --}}
+      <button class="api-button" data-endpoint="/api/data1" data-target="#output1">Load Data 1</button>
       <button class="api-button" data-endpoint="/api/data2" data-target="#output2">Load Data 2</button>
       <button class="api-button" data-endpoint="/api/data3" data-target="#output3">Load Data 3</button>
 
@@ -21,6 +22,7 @@
       <!-- Reviews List -->
       <div id="reviews-list-{{_id}}" class="output-container hidden"></div>
       {{!-- More containers for the buttons in the future? --}}
+      <div id="output1" class="output-container hidden"></div>
       <div id="output2" class="output-container hidden"></div>
       <div id="output3" class="output-container hidden"></div>
 

@@ -25,12 +25,13 @@ document.addEventListener("click", async (event) => {
     targetElement.classList.toggle("hidden");
 
     try {
+      // using the Fetch API to make a request to the server
       const response = await fetch(endpoint);
       if (!response.ok) throw new Error("Network response was not ok");
 
       const data = await response.json();
 
-      displayReviewsByMovieHTML(targetElement, data);
+      displayResponse(targetElement, data);
       targetElement.dataset.loaded = "true"; // Mark as loaded
     } catch (error) {
       console.error("Fetch error:", error);
@@ -40,7 +41,7 @@ document.addEventListener("click", async (event) => {
 });
 
 // for displaying the reviews in HTML format, takes desired parts from the response
-function displayReviewsByMovieHTML(targetElement, data) {
+function displayResponse(targetElement, data) {
   if (!data || !data.data) {
     targetElement.innerHTML = "<p>No reviews available.</p>";
     return;
