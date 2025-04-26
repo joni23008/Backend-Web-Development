@@ -7,7 +7,7 @@ const tmdbMovieSchema = new mongoose.Schema({
   overview:     { type: String              },
   genre_ids:    { type: [Number], default: [] }
 }, {
-  collection: 'Moviesv2'
+  collection: 'Movies'
 });
 
 module.exports = mongoose.model('TmdbMovie', tmdbMovieSchema);
