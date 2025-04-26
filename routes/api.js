@@ -5,7 +5,7 @@ const router       = express.Router();
 const TmdbMovie  = require('../models/TmdbMovie');
 
 // GET /api/import      → trigger a manual import
-router.get('/movies', importPopular);
+router.get('/import', importPopular);
 
 // GET /api/movies      → list all saved movies
 router.get('/yes',  listStored);
