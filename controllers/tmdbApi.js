@@ -18,7 +18,7 @@ async function importPopular(reqOrPage, res, next) {
         params: {
           api_key:  process.env.TMDB_API_KEY,
           language: 'en-US',
-          page: 
+          page: 1
         }
       }
     );
