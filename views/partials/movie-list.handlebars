@@ -4,20 +4,26 @@
       <strong>{{Name}}</strong> ({{Year}}) — {{category}}
       <p>{{Description}}</p>
 
+      {{!-- Buttons --}}
       <!-- Toggle Review Form Button -->
       <button onclick="toggleReviewForm('{{_id}}')">Write Review</button>
+      <!-- Toggle Show Reviews Button -->
+      <button class="api-button" data-endpoint="/review/movie/{{_id}}" data-target="#reviews-list-{{_id}}">Show Reviews</button>
+      {{!-- More buttons in the future? --}}
+      <button class="api-button" data-endpoint="/api/data2" data-target="#output2">Load Data 2</button>
+      <button class="api-button" data-endpoint="/api/data3" data-target="#output3">Load Data 3</button>
 
+      {{!-- Containers --}}
       <!-- Review Form -->
-      <div id="review-form-{{_id}}" class="review-form-container hidden">
+      <div id="review-form-{{_id}}" class="output-container hidden">
         {{> review-form movieId=_id }}
       </div>
-
-      <!-- Toggle Show Reviews Button -->
-      {{!-- Check the review-list.js file from public folder and review-list.css--}}
-      <button onclick="fetchReviews('{{_id}}')">Show Reviews</button>
-
       <!-- Reviews List -->
-      <div id="reviews-list-{{_id}}" class="reviews-container hidden"></div>
+      <div id="reviews-list-{{_id}}" class="output-container hidden"></div>
+      {{!-- More containers for the buttons in the future? --}}
+      <div id="output2" class="output-container hidden"></div>
+      <div id="output3" class="output-container hidden"></div>
+
     </li>
   {{/each}}
 </ul>
