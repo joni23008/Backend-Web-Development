@@ -11,7 +11,7 @@ router.get('/import', importPopular);
 router.get('/yes',  listStored);
 
 // routes/tmdb.js
-router.get('/popular', async (req, res) => {
+router.get('/Movies', async (req, res) => {
     const movies = await TmdbMovie.find().lean();
     res.render('popular', { title: 'Popular Movies', movies });
   });

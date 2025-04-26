@@ -18,7 +18,7 @@ async function importPopular(reqOrPage, res, next) {
         params: {
           api_key:  process.env.TMDB_API_KEY,
           language: 'en-US',
-          page: 1
+          page: page
         }
       }
     );
@@ -29,9 +29,7 @@ async function importPopular(reqOrPage, res, next) {
         update: {
           tmdbId:       m.id,
           title:        m.title,
-          release_date: m.release_date
-                             ? new Date(m.release_date)
-                             : null,
+          release_date: m.release_date,
           overview:     m.overview,
           genre_ids:    m.genre_ids
         },
