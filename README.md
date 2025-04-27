@@ -43,13 +43,20 @@
 - TEEMU: nähtäis handlebars sivulla mongodb dummy dataa
 - NIKO: käyttäjä systeemi, miten saadaan erotettua public/user ja selain muistaa, sisäänkirjautuminen
 
-## Moduulit
+## Moduulit / Mitä ollaan käytetty
 
-- npm install express
-- npm install express-handlebars
-- npm install dotenv
-- npm install mongoose
-- npm install nodemon --save-dev
+- npm install
+
+"axios": "^1.9.0",
+"bcryptjs": "^3.0.2",
+"connect-flash": "^0.1.1",
+"dotenv": "^16.5.0",
+"express": "^5.1.0",
+"express-handlebars": "^8.0.2",
+"express-session": "^1.18.1",
+"mongoose": "^8.13.2",
+"passport": "^0.7.0",
+"passport-local": "^1.0.0"
 
 ## Elokuva API
 
