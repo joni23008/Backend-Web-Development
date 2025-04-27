@@ -58,3 +58,11 @@ https://www.themoviedb.org/
 ## Kanban
 
 https://planner.cloud.microsoft/webui/plan/-I8GmFpvIEa6WyCMfhZCPpYAAbBp/view/board?tid=fbd2f045-b34c-4673-9534-8f2374355cec
+
+## Accessablity - palautus
+
+https://1drv.ms/w/c/67b09aef79f35846/Ea1AXKkPy3NFqVtmKoH4qNcBSUtz19nGJUsFDGIY8_K-9A?e=f8XVga
+
+## Meeting Notes
+
+https://1drv.ms/x/c/67b09aef79f35846/Ea1YVCH0I5RJuSC8Jcit-PUBCDei5m09DFoykiYCPk4Kbw?e=PYeupm
