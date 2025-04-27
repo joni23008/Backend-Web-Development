@@ -9,8 +9,8 @@ const apiRoutes = require("./api");
 
 router.use("/", homeRoutes);
 router.use("/auth", authRoutes);
-router.use("/api/review", reviewRoutes);
-router.use("/profile", profileRoutes)
+router.use("/review", reviewRoutes);
+router.use("/profile", profileRoutes);
 router.use("/", apiRoutes);
 
 module.exports = router;

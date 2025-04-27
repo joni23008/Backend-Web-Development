@@ -17,7 +17,7 @@ const readAllReviews = async (req, res) => {
   // same thing but exclude the IDs aswell
   const reviews = await Review.find()
     .populate("user", "username -_id")
-    .populate("movie", "Name -_id");
+    .populate("movie", "title -_id");
   // response
   res.status(200).json({
     success: true,
@@ -35,7 +35,7 @@ const readReviewById = async (req, res) => {
   // find one by ID, from the database
   const review = await Review.findById(req.params.id)
     .populate("user", "username -_id")
-    .populate("movie", "Name -_id");
+    .populate("movie", "title -_id");
   if (!review) {
     return res.status(404).json({ message: "Not found" });
   }
@@ -55,7 +55,7 @@ const readReviewsByMovie = async (req, res) => {
   // find all by movie ID, from the database
   const reviews = await Review.find({ movie: req.params.movieId })
     .populate("user", "username -_id")
-    .populate("movie", "Name -_id");
+    .populate("movie", "title -_id");
   // check if no review was found with the given ID (or it didn’t exist)
   if (!reviews) {
     return res.status(404).json({ message: "Not found" });
@@ -77,7 +77,7 @@ const readReviewsByUser = async (req, res) => {
   // find all by user ID, from the database
   const reviews = await Review.find({ user: req.params.userId })
     .populate("user", "username -_id")
-    .populate("movie", "Name -_id");
+    .populate("movie", "title -_id");
   // check if no review was found with the given ID (or it didn’t exist)
   if (!reviews) {
     return res.status(404).json({ message: "Not found" });
@@ -169,7 +169,7 @@ const updateReviewById = async (req, res) => {
     { new: true, runValidators: true }
   )
     .populate("user", "username -_id")
-    .populate("movie", "Name -_id");
+    .populate("movie", "title -_id");
   // check if no review was found with the given ID (or it didn’t exist)
   if (!updatedReview) {
     return res.status(404).json({ message: "Not found" });
@@ -190,7 +190,7 @@ const deleteReviewById = async (req, res) => {
   // delete one by ID, from the database
   const deletedReview = await Review.findByIdAndDelete(req.params.id)
     .populate("user", "username -_id")
-    .populate("movie", "Name -_id");
+    .populate("movie", "title -_id");
   // check if no review was found with the given ID (or it didn’t exist)
   if (!deletedReview) {
     return res.status(404).json({ message: "Not found" });
