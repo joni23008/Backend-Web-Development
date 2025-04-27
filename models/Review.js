@@ -29,7 +29,7 @@ const ReviewSchema = new mongoose.Schema(
     },
     movie: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Movie", // Reference to the Movies collection, needs to match the model name not the raw collection name
+      ref: "TmdbMovie", // Reference to the Movies collection, needs to match the model name not the raw collection name
       required: true,
     },
     rating: {
