@@ -32,7 +32,7 @@ router.get("/Movies", async (req, res) => {
     //   title:  'Popular Movies',
     //   movies: moviesWithNames
     // });
-    console.log(moviesWithNames);
+    // console.log(moviesWithNames);
     res.status(200).json(moviesWithNames);
   } catch (err) {
     console.error(err);
