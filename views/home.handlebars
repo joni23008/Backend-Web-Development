@@ -1,3 +1,4 @@
+{{!-- home.handlebars --}}
 <h1>{{title}}</h1>
 {{#if user}}  <!-- Check if there is a logged-in user -->
   <h1>Welcome, {{user.username}}!</h1>
@@ -6,3 +7,5 @@
   <h1>Welcome, Guest!</h1>
   <a href="/auth/login">Login</a> | <a href="/auth/register">Register</a>
 {{/if}}
+
+{{>movie-list}}

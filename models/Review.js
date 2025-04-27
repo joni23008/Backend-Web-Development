@@ -48,6 +48,7 @@ const ReviewSchema = new mongoose.Schema(
 );
 
 // Ensure a user can review a movie only once, uncomment this line to enforce the constraint
+// So duplicates are allowed as long as this is not uncommented
 // ReviewSchema.index({ user: 1, movie: 1 }, { unique: true });
 
 module.exports = mongoose.model("Review", ReviewSchema);
