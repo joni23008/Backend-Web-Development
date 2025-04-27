@@ -15,6 +15,9 @@ require("./config/db")();
 // Passport config
 require("./config/passport")(passport);
 
+// Flash middleware
+const flashMiddleware = require('./middlewares/flash');
+
 // Body parsers
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -28,6 +31,11 @@ app.use(
     secret: process.env.SESSION_SECRET || "fallback_string",
     resave: false,
     saveUninitialized: false,
+    cookie: {
+      httpOnly: true,
+      secure: false,
+      sameSite: 'lax'
+    }
   })
 );
 
@@ -38,13 +46,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Middleware to attach the logged-in user to views
-app.use((req, res, next) => {
-  res.locals.user = req.user || null; // Attach the logged-in user (or null if not logged in)
-  res.locals.success_msg = req.flash("success_msg");
-  res.locals.error_msg = req.flash("error_msg");
-  res.locals.error = req.flash("error"); // for passport errors
-  next();
-});
+app.use(flashMiddleware);
 
 // View engine setup
 app.engine(

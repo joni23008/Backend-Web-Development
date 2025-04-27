@@ -1,0 +1,33 @@
+{{> messages}}
+
+<h1>Welcome, {{user.username}}</h1>
+
+<h2>Your Reviews</h2>
+
+{{#if reviews.length}}
+  <ul>
+    {{#each reviews}}
+      <li>
+        <strong>{{this.movie.title}}</strong>: {{this.text}}
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>You haven't written any reviews yet.</p>
+{{/if}}
+
+<h2>Change Password</h2>
+<form method="POST" action="/auth/change-password">
+    <input type="password" name="currentPassword" placeholder="Current Password" required>
+    <input type="password" name="newPassword" placeholder="New Password" required>
+    <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
+    <button type="submit">Change password</button>
+</form>
+
+<h2>Delete User</h2>
+<form action="/profile/delete" method="POST">
+  <label for="password">Confirm your password:</label>
+  <input type="password" name="password" id="password" placeholder="Password" required>
+
+  <button type="submit">Delete Account</button>
+</form>

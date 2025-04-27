@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Movie = require("../models/Movies");
+const Movie = require("../models/TmdbMovie");
 
 router.get("/", async (req, res) => {
   // Fetch all movies

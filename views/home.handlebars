@@ -1,8 +1,11 @@
-{{!-- home.handlebars --}}
+{{> messages}} <!-- This is for flash messages(success, error, info)-->
+
 <h1>{{title}}</h1>
+
 {{#if user}}  <!-- Check if there is a logged-in user -->
   <h1>Welcome, {{user.username}}!</h1>
   <a href="/auth/logout">Logout</a>  <!-- A logout link -->
+  
 {{else}}  <!-- If no user is logged in -->
   <h1>Welcome, Guest!</h1>
   <a href="/auth/login">Login</a> | <a href="/auth/register">Register</a>
