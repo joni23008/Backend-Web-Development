@@ -22,41 +22,39 @@
    - username: String
    - password: String
    - id: MongoDB generoima
+   - role : String
 2. movies collection
-   - nimi: String
-   - julkaisuvuosi: Date
-   - kategoria: String
-   - kuvaus: String
-   - id: MongoDB generoima
+   - id: int, (Mongoid)
+   - tmdbId: int
+   - genre_ids: array of ints
+   - overview: String
+   - released date: String
+   - title : String
 3. reviews collection
    - movie id: viittaus mongodb collectionii "movies" ja kyseiseen elokuvaan (id)
    - user id: viittaus mongodb collectionii "users" ja kyseiseen käyttäjään (id)
    - rating: Number
    - comment: String
    - created at: Date
+   - udated at: Date
    - id: MongoDB generoima
 
-## Työnjako:
 
-- JONI: reviews reitit, crud operaatiot ja schema
-- TEEMU: moviedb api käyttöönotto ja testaus. ei tarvitse tallentaa tietokantaan vielä
-- TEEMU: nähtäis handlebars sivulla mongodb dummy dataa
-- NIKO: käyttäjä systeemi, miten saadaan erotettua public/user ja selain muistaa, sisäänkirjautuminen
 
 ## Moduulit / Mitä ollaan käytetty
 
 - npm install
 
-"axios": "^1.9.0",
-"bcryptjs": "^3.0.2",
-"connect-flash": "^0.1.1",
-"dotenv": "^16.5.0",
-"express": "^5.1.0",
-"express-handlebars": "^8.0.2",
-"express-session": "^1.18.1",
-"mongoose": "^8.13.2",
-"passport": "^0.7.0",
-"passport-local": "^1.0.0"
+- "axios": "^1.9.0",
+- "bcryptjs": "^3.0.2",
+- "connect-flash": "^0.1.1",
+- "dotenv": "^16.5.0",
+- "express": "^5.1.0",
+- "express-handlebars": "^8.0.2",
+- "express-session": "^1.18.1",
+- "mongoose": "^8.13.2",
+- "passport": "^0.7.0",
+- "passport-local": "^1.0.0"
 
 ## Elokuva API
 
