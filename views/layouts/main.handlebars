@@ -2,10 +2,14 @@
   <head>
     <meta charset="UTF-8" />
     <title>{{title}}</title>
-    <link rel="stylesheet" href="css/movie-list.css" />
+    <link rel="stylesheet" href="../css/movie-list.css" />
+    <link rel="stylesheet" href="../css/global.css" />
+    {{!-- if css files have similar styles, the later added overrides the top one as it is loaded after --}}
   </head>
   <body>
+    {{>navbar}}
     {{{body}}}
-    <script src="js/movie-list.js"></script>
+    <script src="../js/movie-list.js"></script>
+    {{!-- if js files have similar scripts, the later added overrides the top one as it is loaded after --}}
   </body>
 </html>
