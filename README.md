@@ -39,6 +39,11 @@
    - udated at: Date
    - id: MongoDB generoima
 
+4. Genre collection
+   - _id: int(Mongoid)
+   - id: int
+   - Name : String
+
 
 
 ## Moduulit / Mitä ollaan käytetty
