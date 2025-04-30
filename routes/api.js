@@ -4,9 +4,10 @@ const { importPopular, listStored } = require("../controllers/tmdbApi");
 const router = express.Router();
 const TmdbMovie = require("../models/TmdbMovie");
 const Genre = require("../models/Genre");
+const { isAuthenticated, checkRole } = require("../middlewares/auth");
 
 // GET /api/import      → trigger a manual import
-router.get("/import", importPopular);
+router.get('/import', isAuthenticated, checkRole('admin'), importPopular);
 
 router.get("/yes", listStored);
 

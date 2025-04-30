@@ -8,7 +8,11 @@
   <ul>
     {{#each reviews}}
       <li>
-        <strong>{{this.movie.title}}</strong>: {{this.text}}
+        <strong>{{this.movie.title}}</strong>: "{{this.comment}}" <Strong>Rating:</Strong> {{this.rating}}
+        <form action="/profile/review/{{this._id}}" method="POST">
+          <button type="submit" aria-label="Delete review for {{this.movie.title}}">Delete</button>
+        </form>
+
       </li>
     {{/each}}
   </ul>
@@ -18,8 +22,11 @@
 
 <h2>Change Password</h2>
 <form method="POST" action="/auth/change-password">
+    <label for="currentPassword">Current Password</label>
     <input type="password" name="currentPassword" placeholder="Current Password" required>
+    <label for="newPassword">New Password</label>
     <input type="password" name="newPassword" placeholder="New Password" required>
+    <label for="confirmPassword">Confirm Password</label>
     <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
     <button type="submit">Change password</button>
 </form>
