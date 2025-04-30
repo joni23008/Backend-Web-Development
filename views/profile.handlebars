@@ -9,7 +9,7 @@
     {{#each reviews}}
       <li>
         <strong>{{this.movie.title}}</strong>: "{{this.comment}}" <Strong>Rating:</Strong> {{this.rating}}
-        <form action="/review/profile/review/{{this._id}}" method="POST">
+        <form action="/profile/review/{{this._id}}" method="POST">
           <button type="submit" aria-label="Delete review for {{this.movie.title}}">Delete</button>
         </form>
 

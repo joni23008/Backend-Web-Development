@@ -203,34 +203,6 @@ const deleteReviewById = async (req, res) => {
   });
 };
 
-// DELETE by ID from profile page
-const deleteReviewFromProfile = async (req, res) => {
-  try {
-    console.log("Deleting review from profile:", req.params.id);
-    const review = await Review.findById(req.params.id);
-    // Check if review is found from database
-    if (!review) {
-      req.flash('error', 'Review not found');
-      return res.redirect('/profile');
-    }
-
-    // Check if user owns the review
-    if (review.user.toString() !== req.user._id.toString()) {
-      req.flash('error', 'Unauthorized to delete this review');
-      return res.redirect('/profile');
-    }
-
-    await review.deleteOne();
-
-    req.flash('success', 'Review deleted successfully');
-    res.redirect('/profile');
-  } catch (error) {
-    console.error(error);
-    req.flash('error', 'Something went wrong');
-    res.redirect('/profile');
-  }
-};
-
 module.exports = {
   readAllReviews,
   readReviewById,
@@ -240,7 +212,6 @@ module.exports = {
   createReviewDummy,
   updateReviewById,
   deleteReviewById,
-  deleteReviewFromProfile,
 };
 
 // Duplicate-ish codes:
