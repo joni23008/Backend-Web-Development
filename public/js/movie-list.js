@@ -1,10 +1,10 @@
-// for revealing the review form on the movie
-function toggleReviewForm(movieId) {
-  const form = document.getElementById(`review-form-${movieId}`);
-  form.classList.toggle("hidden");
+// Toggle Review Form Visibility (left column)
+function toggleReviewForm(id) {
+  const form = document.getElementById(`review-form-${id}`);
+  form.classList.toggle("visible");
 }
 
-// for adding a event listener for clicking (button), takes the response from the server and sends it to the corresponding function
+// Show Reviews and Fetch If Needed (right column)
 document.addEventListener("click", async (event) => {
   if (event.target.matches(".api-button")) {
     const endpoint = event.target.dataset.endpoint;
@@ -16,16 +16,15 @@ document.addEventListener("click", async (event) => {
       return;
     }
 
-    // If the content is already loaded, just toggle visibility
+    // Toggle visibility if already loaded
     if (targetElement.dataset.loaded === "true") {
-      targetElement.classList.toggle("hidden");
+      targetElement.classList.toggle("visible");
       return;
     }
 
-    targetElement.classList.toggle("hidden");
+    targetElement.classList.add("visible"); // Show while loading
 
     try {
-      // using the Fetch API to make a request to the server
       const response = await fetch(endpoint);
       if (!response.ok) throw new Error("Network response was not ok");
 
@@ -40,9 +39,9 @@ document.addEventListener("click", async (event) => {
   }
 });
 
-// for displaying the reviews in HTML format, takes desired parts from the response
+// Render Review Items
 function displayResponse(targetElement, data) {
-  if (!data || !data.data) {
+  if (!data || !data.data || data.data.length === 0) {
     targetElement.innerHTML = "<p>No reviews available.</p>";
     return;
   }
@@ -50,28 +49,28 @@ function displayResponse(targetElement, data) {
   const reviews = data.data;
   const listItems = reviews
     .map((item) => {
-      const user = item.user ? item.user.username : "Unknown User";
-      const rating = item.rating || "No rating provided";
-      const comment = item.comment || "No comment provided";
-      const createdAt = item.createdAt || "Unknown date on creation";
-      const updatedAt = item.updatedAt || "Unknown date on update";
+      const user = item.user?.username || "Unknown User";
+      const rating = item.rating || "No rating";
+      const comment = item.comment || "No comment";
+      const createdAt = item.createdAt || "Unknown";
+      const updatedAt = item.updatedAt || "Unknown";
 
       return `
-        <li>
-          <p>User: ${user}</p>
-          <p>Rating: ${rating}</p>
-          <p>Comment: ${comment}</p>
-          <p>Created At: ${createdAt}</p>
-          <p>Updated At: ${updatedAt}</p>
+        <li style="margin-bottom: 1rem; border-bottom: 1px solid #ccc; padding-bottom: 0.5rem;">
+          <p><strong>User:</strong> ${user}</p>
+          <p><strong>Rating:</strong> ${rating}</p>
+          <p><strong>Comment:</strong> ${comment}</p>
+          <p><small>Created: ${createdAt}</small></p>
+          <p><small>Updated: ${updatedAt}</small></p>
         </li>
       `;
     })
     .join("");
 
-  targetElement.innerHTML = `<ul>${listItems}</ul>`;
+  targetElement.innerHTML = `<ul style="list-style: none; padding-left: 0;">${listItems}</ul>`;
 }
 
-// for displaying the error message in HTML format, takes the error message from the response
+// Show Error in Target Element
 function displayError(targetElement, error) {
   targetElement.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
 }
