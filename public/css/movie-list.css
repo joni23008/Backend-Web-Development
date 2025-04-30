@@ -18,7 +18,7 @@
 /* Left: Review Form Column */
 .review-form-column {
   width: 250px;
-  background: #ffffff;
+  background: #fff6f6;
   padding: 1rem;
   visibility: hidden;
   overflow-y: auto; /* Allow scrolling inside if form is too big */
@@ -30,7 +30,7 @@
 /* Center: Movie Card */
 .movie-card {
   flex: 1;
-  background: #ffffff;
+  background: #fff6f6;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -43,7 +43,7 @@
 /* Right: Reviews List Column */
 .reviews-list-column {
   width: 300px;
-  background: #ffffff;
+  background: #fff6f6;
   padding: 1rem;
   visibility: hidden;
   overflow-y: auto; /* Scroll inside when too many reviews */
