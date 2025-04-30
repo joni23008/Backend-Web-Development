@@ -1,3 +1,66 @@
+/* For javascript, to make them disapear and re-appear */
 .hidden {
-  display: none;
+  visibility: hidden;
+}
+
+.movie-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1em;
+  margin: 1em auto; /* centers horizontally */
+  width: 100%;
+  max-width: 1000px;
+  height: 500px;
+  box-sizing: border-box;
+}
+
+/* Left: Review Form Column */
+.review-form-column {
+  width: 250px;
+  background: #ffffff;
+  padding: 1rem;
+  visibility: hidden;
+  overflow-y: auto; /* Allow scrolling inside if form is too big */
+}
+.review-form-column.visible {
+  visibility: visible;
+}
+
+/* Center: Movie Card */
+.movie-card {
+  flex: 1;
+  background: #ffffff;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.movie-card h2 {
+  margin: 0;
+}
+
+/* Right: Reviews List Column */
+.reviews-list-column {
+  width: 300px;
+  background: #ffffff;
+  padding: 1rem;
+  visibility: hidden;
+  overflow-y: auto; /* Scroll inside when too many reviews */
+}
+.reviews-list-column.visible {
+  visibility: visible;
+}
+
+/* Style for fetched reviews */
+.reviews-list-column ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+.reviews-list-column li {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.5rem;
+  font-size: 0.9rem;
 }

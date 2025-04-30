@@ -1,32 +1,23 @@
-<ul>
-  {{#each movies}}
-    <li>
-      <strong>{{title}}</strong> ({{release_date}}) — {{genre_names}}
-      <p>{{overview}}</p>
+{{#each movies}}
+  <div class="movie-container">
+    <!-- Left: Review Form (hidden but space reserved) -->
+    <div id="review-form-{{_id}}" class="review-form-column">
+      {{> review-form movieId=_id }}
+    </div>
 
-      {{!-- Buttons --}}
-      <!-- Toggle Review Form Button -->
+    <!-- Center: Movie Card -->
+    <div class="movie-card">
+      <h2><strong>{{title}}</strong></h2>
+      <p><i>Release Date: {{release_date}}</i></p>
+      <p><i>Genres: {{genre_names}}</i></p>
+      <p style="overflow-y: auto;">{{overview}}</p>
+
       <button onclick="toggleReviewForm('{{_id}}')">Write Review</button>
-      <!-- Toggle Show All Reviews Button -->
       <button class="api-button" data-endpoint="/review/movie/{{_id}}" data-target="#reviews-list-{{_id}}">Show All Reviews</button>
-      {{!-- More buttons in the future? --}}
-      <button class="api-button" data-endpoint="/api/data1" data-target="#output1">Load Data 1</button>
-      <button class="api-button" data-endpoint="/api/data2" data-target="#output2">Load Data 2</button>
-      <button class="api-button" data-endpoint="/api/data3" data-target="#output3">Load Data 3</button>
+    </div>
 
-      {{!-- Containers --}}
-      <!-- Review Form -->
-      <div id="review-form-{{_id}}" class="output-container hidden">
-        {{> review-form movieId=_id }}
-      </div>
-      <!-- Reviews List -->
-      <div id="reviews-list-{{_id}}" class="output-container hidden"></div>
-      {{!-- More containers for the buttons in the future? --}}
-      <div id="output1" class="output-container hidden"></div>
-      <div id="output2" class="output-container hidden"></div>
-      <div id="output3" class="output-container hidden"></div>
-
-    </li>
-  {{/each}}
-</ul>
+    <!-- Right: Review List -->
+    <div id="reviews-list-{{_id}}" class="reviews-list-column"></div>
+  </div>
+{{/each}}
 
