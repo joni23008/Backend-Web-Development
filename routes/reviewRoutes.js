@@ -17,6 +17,7 @@ router.get(
 router.post("/", isAuthenticated, reviewController.createReview);
 router.patch("/:id", isAuthenticated, reviewController.updateReviewById);
 router.delete("/:id", isAuthenticated, reviewController.deleteReviewById);
+router.post('/profile/review/:id', isAuthenticated, reviewController.deleteReviewFromProfile);
 
 // Anyone can read all reviews, by id or by movie. Postman works here.
 router.get("/movie/:movieId", reviewController.readReviewsByMovie);

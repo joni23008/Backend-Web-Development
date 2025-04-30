@@ -8,7 +8,11 @@
   <ul>
     {{#each reviews}}
       <li>
-        <strong>{{this.movie.title}}</strong>: {{this.text}}
+        <strong>{{this.movie.title}}</strong>: "{{this.comment}}" <Strong>Rating:</Strong> {{this.rating}}
+        <form action="/review/profile/review/{{this._id}}" method="POST">
+          <button type="submit">Delete</button>
+        </form>
+
       </li>
     {{/each}}
   </ul>

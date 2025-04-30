@@ -9,7 +9,8 @@ const bcrypt = require('bcryptjs');
 router.get('/', isAuthenticated, async (req, res) => {
     try {
       const user = req.user.toObject();  
-      const reviews = await Review.find({ user: user._id }).populate('movie');
+      const reviews = await Review.find({ user: user._id }).populate('movie').lean();
+      console.log(reviews);
       res.render('profile', {
         title: 'Your Profile',
         user,
