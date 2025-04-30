@@ -10,9 +10,9 @@ router.get("/", async (req, res) => {
   const movies = await response.json();
   if (req.user) {
     const user = req.user.toObject ? req.user.toObject() : req.user;
-    res.render("home", { title: "Home Page", user, movies });
+    res.render("home", { title: "Home", user, movies });
   } else {
-    res.render("home", { title: "Home Page", movies });
+    res.render("home", { title: "Home", movies });
   }
 });
 

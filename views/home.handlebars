@@ -1,12 +1,54 @@
 {{> messages}} <!-- This is for flash messages(success, error, info)-->
 
-<h1>{{title}}</h1>
-
 {{#if user}}  <!-- Check if there is a logged-in user -->
-  <h1>Welcome, {{user.username}}!</h1>
+<section class="home-introduction">  
+  <h1>Welcome, <strong>{{user.username}}</strong>!</h1>
+  <p>
+    Here, you can browse the list of films,  
+    read reviews by other users,  
+    and—if you'd like to share your own—register and log in!<br><br>
+
+    To get started, simply scroll down and go through our list,  
+    pick a movie,  
+    read the reviews,  
+    or write your own.<br><br>
+
+    Click the <strong>"Write Review"</strong> button to submit your review,  
+    or click <strong>"Show All Reviews"</strong> to view all the reviews for that film.<br><br>
+
+    Each movie listing includes the release year, genres, title, and a brief overview.<br><br>
+
+    Whether you're a casual viewer or a true film addict,  
+    this is the place to discover, discuss, and enjoy the world of cinema!
+  </p>
+</section>
+
+
+
   
 {{else}}  <!-- If no user is logged in -->
+<section class="home-introduction">  
   <h1>Welcome, Guest!</h1>
+  <p>
+    Here, you can browse the list of films,  
+    read reviews by other users,  
+    and—if you'd like to share your own—register and log in!<br><br>
+
+    To get started, simply scroll down and go through our list,  
+    pick a movie,  
+    read the reviews,  
+    or write your own.<br><br>
+
+    Click the <strong>"Write Review"</strong> button to submit your review,  
+    or click <strong>"Show All Reviews"</strong> to view all the reviews for that film.<br><br>
+
+    Each movie listing includes the release year, genres, title, and a brief overview.<br><br>
+
+    Whether you're a casual viewer or a true film addict,  
+    this is the place to discover, discuss, and enjoy the world of cinema!
+  </p>
+</section>
+
 {{/if}}
 
-{{>movie-list}}
+<main>{{>movie-list}}</main>
