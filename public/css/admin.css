@@ -4,7 +4,7 @@
     margin: 0 auto;    /* Center the content horizontally */
   }
   
-  h1 {
+#admin-dashboard  h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
     color: #000000;
@@ -12,14 +12,14 @@
   }
   
   /* Review List */
-  .review-list {
+  #admin-dashboard  .review-list {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: center; /* Center items horizontally */
   }
   
-  .review-card {
+  #admin-dashboard  .review-card {
     background-color: #ffdcb5;
     border: 1px solid #000000;
     border-radius: 8px;
@@ -28,18 +28,18 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
   
-  .review-card ul {
+  #admin-dashboard  .review-card ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
   }
   
-  .review-card li {
+  #admin-dashboard  .review-card li {
     margin-bottom: 0.5rem;
     color: #000000;
   }
   
-  button {
+  #admin-dashboard  button {
     padding: 0.5rem 1rem;
     background-color: #cc0000;
     color: white;
@@ -51,7 +51,7 @@
     font-size: 1rem;
   }
   
-  button:hover {
+  #admin-dashboard  button:hover {
     background-color: #a30000;
     /* Remove hover effect if you don't need it */
   }
