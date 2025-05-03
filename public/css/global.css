@@ -11,10 +11,11 @@ colors {
   color: #fff0a1;
   color: #c8dba2;
   color: #c2d2c6;
+  color: #000000;
 }
 /* navbar */
 nav {
-  background-color: #fff6f6;
+  background-color: #000000;
   padding: 1em;
   text-transform: uppercase;
 }
