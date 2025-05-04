@@ -1,0 +1,100 @@
+#profile-page {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-items: center;
+}
+
+#profile-page h1 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #000000;
+    text-align: center;
+}
+
+#profile-page section {
+    background-color: #ffdcb5;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    padding: 1rem;
+    width: 75%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+#profile-page h2 {
+    justify-self: center;
+}
+#profile-page li {
+    border-bottom: 1px solid black;
+}
+#profile-page button {
+    padding: 0.5rem 1rem;
+    background-color: #cc0000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    max-width: 150px;
+    width: 80%;
+    font-size: 1rem;
+}
+#profile-page button:hover {
+    background-color: #a30000;
+}
+
+#changePassword {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#changePassword form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 50%;
+}
+
+#changePassword button {
+    margin-top: 15px;
+    align-self: center;
+}
+#changePassword label {
+    font-weight: bold;
+}
+#changePassword input {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+#deleteUser form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#deleteUser button {
+    align-self: center;
+}
+#deleteUser input {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+#deleteUser label {
+    font-weight: bold;
+}
+#deleteUser .input-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+#deleteUser .input-row label {
+    white-space: nowrap;
+}
+#deleteUser .input-row input {
+    flex: 1;
+    padding: 0.5rem;
+}

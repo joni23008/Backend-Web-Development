@@ -1,20 +1,20 @@
-<div id="admin-dashboard">
+<main id="admin-dashboard">
     {{> messages}}
 
     <h1>Admin Dashboard</h1>
 
     <div class="review-list">
     {{#each reviews}}
-        <div class="review-card">
+        <article class="review-card">
             <ul>
                 <li><strong>User:</strong> {{this.user.username}}</li>
                 <li><strong>Movie:</strong> {{this.movie.title}}</li>
-                <li><strong>Review:</strong> {{this.comment}}</li>
+                <li><strong>Comment:</strong> {{this.comment}}</li>
             </ul>
             <form method="POST" action="/profile/review/{{this._id}}" onsubmit="return confirm('Are you sure you want to delete this review?')">
-                <button type="submit">Delete</button>
+                <button type="submit" aria-label="Delete review by {{this.user.username}}">Delete</button>
             </form>
-        </div>
+        </article>
     {{/each}}
     </div>
-</div>
+</main>

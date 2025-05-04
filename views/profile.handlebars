@@ -1,41 +1,51 @@
 {{> messages}}
 
+<main id="profile-page">
+  <h1>Welcome to your profile page, {{user.username}}!</h1>
 
-<h1>Welcome, {{user.username}}</h1>
+  <section aria-labelledby="reviews-heading">
+    <h2>Your Reviews</h2>
+    {{#if reviews.length}}
+      <ul>
+        {{#each reviews}}
+          <li>
+            <div>
+              <p><strong>Movie:</strong> {{this.movie.title}}</p>
+              <p><strong>Comment:</strong> "{{this.comment}}"</p>
+              <p><strong>Rating:</strong> {{this.rating}}</p>
+            </div>
+            <form action="/profile/review/{{this._id}}" method="POST" onsubmit="return confirm('Are you sure you want to delete this review?')">
+              <button type="submit" aria-label="Delete review for {{this.movie.title}}">Delete</button>
+            </form>
+          </li>
+        {{/each}}
+      </ul>
+    {{else}}
+      <p>You haven't written any reviews yet.</p>
+    {{/if}}
+  </section>
 
-<h2>Your Reviews</h2>
+  <section id="changePassword" aria-labelledby="change-password-heading">
+    <h2>Change Password</h2>
+    <form method="POST" action="/auth/change-password">
+        <label for="currentPassword">Current Password</label>
+        <input type="password" name="currentPassword" id="currentPassword" placeholder="Current Password" required>
+        <label for="newPassword">New Password</label>
+        <input type="password" name="newPassword" id="newPassword" placeholder="New Password" required>
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" required>
+        <button type="submit" aria-label="Confirm password change">Change password</button>
+    </form>
+  </section>
 
-{{#if reviews.length}}
-  <ul>
-    {{#each reviews}}
-      <li>
-        <strong>{{this.movie.title}}</strong>: "{{this.comment}}" <Strong>Rating:</Strong> {{this.rating}}
-        <form action="/profile/review/{{this._id}}" method="POST">
-          <button type="submit" aria-label="Delete review for {{this.movie.title}}">Delete</button>
-        </form>
-
-      </li>
-    {{/each}}
-  </ul>
-{{else}}
-  <p>You haven't written any reviews yet.</p>
-{{/if}}
-
-<h2>Change Password</h2>
-<form method="POST" action="/auth/change-password">
-    <label for="currentPassword">Current Password</label>
-    <input type="password" name="currentPassword" placeholder="Current Password" required>
-    <label for="newPassword">New Password</label>
-    <input type="password" name="newPassword" placeholder="New Password" required>
-    <label for="confirmPassword">Confirm Password</label>
-    <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
-    <button type="submit">Change password</button>
-</form>
-
-<h2>Delete User</h2>
-<form action="/profile/delete" method="POST">
-  <label for="password">Confirm your password:</label>
-  <input type="password" name="password" id="password" placeholder="Password" required>
-
-  <button type="submit">Delete Account</button>
-</form>
+  <section id="deleteUser" aria-labelledby="delete-user-heading">
+    <h2>Delete Your Account</h2>
+    <form action="/profile/delete" method="POST">
+      <div class="input-row">
+        <label for="password">Confirm your password:</label>
+        <input type="password" name="password" id="password" placeholder="Password" required>
+      </div>
+      <button type="submit" aria-label="Confirm deleting your account">Delete Account</button>
+    </form>
+  </section>
+</main>
