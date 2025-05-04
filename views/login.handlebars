@@ -1,7 +1,7 @@
 {{> messages}} <!-- This is for flash messages(success, error, info)-->
 
 <h1>Login</h1>
-
+<div class="register-form">
 <form action="/auth/login" method="POST">
   <label for="username">Username:</label>
   <input type="text" name="username" required>
@@ -13,6 +13,7 @@
     
   <button type="submit">Login</button>
 </form>
+</div>
 
 <p>Don't have an account? <a href="/auth/register">Register</a></p>
 
