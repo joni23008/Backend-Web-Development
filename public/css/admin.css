@@ -28,15 +28,17 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
   
-  #admin-dashboard  .review-card ul {
+  #admin-dashboard  .review-card div {
     list-style-type: none;
     margin: 0;
     padding: 0;
   }
   
-  #admin-dashboard  .review-card li {
+  #admin-dashboard  .review-card p {
     margin-bottom: 0.5rem;
-    color: #000000;
+    color: #000000;    
+    overflow-wrap: break-word;
+    white-space: normal;
   }
   
   #admin-dashboard  button {

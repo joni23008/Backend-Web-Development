@@ -4,7 +4,7 @@
   <h1>Welcome to your profile page, {{user.username}}!</h1>
 
   <section aria-labelledby="reviews-heading">
-    <h2>Your Reviews</h2>
+    <h2 id="reviews-heading">Your Reviews</h2>
     {{#if reviews.length}}
       <ul>
         {{#each reviews}}
@@ -26,7 +26,7 @@
   </section>
 
   <section id="changePassword" aria-labelledby="change-password-heading">
-    <h2>Change Password</h2>
+    <h2 id="change-password-heading">Change Password</h2>
     <form method="POST" action="/auth/change-password">
         <label for="currentPassword">Current Password</label>
         <input type="password" name="currentPassword" id="currentPassword" placeholder="Current Password" required>
@@ -39,7 +39,7 @@
   </section>
 
   <section id="deleteUser" aria-labelledby="delete-user-heading">
-    <h2>Delete Your Account</h2>
+    <h2 id="delete-user-heading">Delete Your Account</h2>
     <form action="/profile/delete" method="POST">
       <div class="input-row">
         <label for="password">Confirm your password:</label>
