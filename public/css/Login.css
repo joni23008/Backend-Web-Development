@@ -17,7 +17,12 @@ form {
     box-sizing: border-box;
     align-items: center ;
 }
+ .form-group {
+    margin-bottom: 15px;
+    width: 100%;
+    text-align: center;
 
+ }
 label {
     margin-bottom: 5px;
 }
