@@ -2,7 +2,7 @@
 <form action="/review" method="POST" class="review-form">
   <input type="hidden" name="movie" value="{{movieId}}" />
 
-  <div class="form-group">
+  <div class="review-form-group">
     <label for="rating">Rating (1–5):</label>
     <select id="rating" name="rating" required>
       <option value="" disabled selected>Select rating</option>
@@ -14,7 +14,7 @@
     </select>
   </div>
 
-  <div class="form-group">
+  <div class="review-form-group">
     <label for="comment">Comment:</label>
     <textarea
       id="comment"
