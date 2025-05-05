@@ -7,7 +7,7 @@ const router = express.Router();
 
 // Render Register Page
 router.get('/register', (req, res) => {
-  res.render('register');
+  res.render('register', { title: "Register"});
 });
 
 // Handle Register Logic
@@ -45,7 +45,7 @@ router.post('/register', async (req, res) => {
 
 // Render Login Page
 router.get('/login', (req, res) => {
-  res.render('login');
+  res.render('login', {title:"Login"});
 });
 
 // Handle Login Logic (using Passport)
