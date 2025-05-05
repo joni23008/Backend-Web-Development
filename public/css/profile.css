@@ -27,6 +27,10 @@
 #profile-page li {
     border-bottom: 1px solid black;
 }
+#profile-page p {
+    overflow-wrap: break-word;
+    white-space: normal;
+}
 #profile-page button {
     padding: 0.5rem 1rem;
     background-color: #cc0000;
