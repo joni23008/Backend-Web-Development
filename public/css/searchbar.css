@@ -20,8 +20,8 @@
   right: 0;
   background-color: #fff6f6;
   color: #000000;
-  max-height: 150px;
-  overflow-y: auto;
+  overflow-y: auto; /* ✅ allows vertical scrolling */
+  max-height: 200px; /* ✅ constrains height if many results */
   overflow-x: hidden; /* ⛔️ prevents horizontal scroll */
   box-sizing: border-box;
   z-index: 10;
@@ -36,5 +36,9 @@
 }
 
 .suggestion-item:hover {
-  background-color: #d6cece;
+  background-color: #ff0000;
+}
+
+.suggestion-item.active {
+  background-color: #00ff1e;
 }
