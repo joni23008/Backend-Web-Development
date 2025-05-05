@@ -43,3 +43,7 @@ textarea:focus {
   border-color: #ff3b30;
   color: #ffffff;
 }
+
+.alert-message {
+  text-align: center;
+}
