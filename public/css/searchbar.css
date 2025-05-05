@@ -35,10 +35,7 @@
   cursor: pointer;
 }
 
-.suggestion-item:hover {
-  background-color: #ff0000;
-}
-
+.suggestion-item:hover,
 .suggestion-item.active {
-  background-color: #00ff1e;
+  background-color: #c2b9b9;
 }
