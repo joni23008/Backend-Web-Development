@@ -17,12 +17,12 @@ colors {
 nav {
   position: sticky;
   top: 0;
-  background-color: #000000;
+  background-color: #ffdcb5;
   padding: 1em;
   text-transform: uppercase;
   color: #fff6f6;
   z-index: 100;
-  border-bottom: #fff6f6 2px solid;
+  border-bottom: #000000 2px solid;
 }
 nav ul {
   list-style: none;
