@@ -7,7 +7,7 @@ body {
 }
 colors {
   color: #fff6f6;
-  color: #ffdcb5;
+  color: #ffdcb5; /*nr1*/
   color: #fff0a1;
   color: #c8dba2;
   color: #c2d2c6;
@@ -58,4 +58,8 @@ textarea:focus {
   border: 0;
   overflow: hidden;
   clip: rect(0 0 0 0);
+}
+
+.alert-message {
+  text-align: center;
 }

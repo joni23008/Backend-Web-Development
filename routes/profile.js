@@ -8,7 +8,17 @@ const bcrypt = require('bcryptjs');
 // GET /profile
 router.get('/', isAuthenticated, async (req, res) => {
     try {
-      const user = req.user.toObject();  
+      const user = req.user.toObject();
+      
+      if(user.role === 'admin') {
+        const allReviews = await Review.find().populate('user').populate('movie').lean();
+        return res.render('adminProfile', {
+          title: 'Admin Dashboard',
+          user,
+          reviews: allReviews
+        })
+      }
+
       const reviews = await Review.find({ user: user._id }).populate('movie').lean();
       console.log(reviews);
       res.render('profile', {
@@ -54,7 +64,6 @@ router.post('/delete', isAuthenticated, async (req, res) => {
 // Delete review from profile page
 router.post('/review/:id', isAuthenticated, async (req, res) => {
   try {
-    console.log("Deleting review from profile:", req.params.id);
     const review = await Review.findById(req.params.id);
     // Check if review is found from database
     if (!review) {
@@ -62,8 +71,11 @@ router.post('/review/:id', isAuthenticated, async (req, res) => {
       return res.redirect('/profile');
     }
 
-    // Check if user owns the review
-    if (review.user.toString() !== req.user._id.toString()) {
+    const isOwner = review.user.toString() === req.user._id.toString();
+    const isAdmin = req.user.role === 'admin';
+
+    // Check if logged user is owner of the review or admin
+    if(!isOwner && !isAdmin) {
       req.flash('error', 'Unauthorized to delete this review');
       return res.redirect('/profile');
     }
