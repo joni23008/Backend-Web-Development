@@ -5,6 +5,7 @@
     padding: 20px;
     box-sizing: border-box;
     align-items: center ;
+    
 }
 
 form {
@@ -16,6 +17,8 @@ form {
     width: 300px;
     box-sizing: border-box;
     align-items: center ;
+    background-color: #ffdcb5;
+    
 }
  .form-group {
     margin-bottom: 15px;
