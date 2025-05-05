@@ -2,95 +2,97 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Fixed Center Three-Column Layout</title>
+    <title>Smooth Animated Layout</title>
     <style>
-      /* * {
-        box-sizing: border-box;
+      body {
         margin: 0;
         padding: 0;
+        background-color: #434343;
       }
 
-      body,
-      html {
-        height: 100%;
-        font-family: sans-serif;
-      } */
+      .main-content {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #000000;
+      }
 
       .container {
         display: flex;
-        height: 100%;
+        width: 80%;
+        height: 400px;
+        background-color: #f700ff;
+        overflow: hidden;
       }
 
-      .left,
+      .panel {
+        box-sizing: border-box;
+        transition: flex 0.4s ease, opacity 0.4s ease;
+        overflow: hidden;
+      }
+
+      .left {
+        background-color: #48ff00;
+        flex: 0 0 20%;
+      }
+
+      .center {
+        background-color: #00aaff;
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .center-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
       .right {
-        width: 33.33%;
-        position: sticky;
-        top: 0;
-        height: 100vh;
-        background-color: #f0f0f0;
-        padding: 1rem;
-        transition: opacity 0.3s ease, visibility 0.3s ease;
+        background-color: #ff0000;
+        flex: 0 0 30%;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
       }
 
       .hidden {
+        flex: 0 0 0 !important;
         opacity: 0;
         visibility: hidden;
       }
 
-      .visible {
+      .panel:not(.hidden) {
         opacity: 1;
         visibility: visible;
-      }
-
-      .center {
-        width: 33.33%;
-        overflow-y: auto;
-        padding: 1rem;
-        height: 100vh;
-      }
-
-      .box {
-        height: 100px;
-        background: #ddd;
-        margin-bottom: 10px;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-      }
-
-      button {
-        padding: 5px 10px;
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <div id="leftPanel" class="left hidden">
-        <p>This is the form.</p>
-      </div>
-
-      <div class="center">
-        <!-- Repeatable boxes -->
-        <div class="box">
-          <button onclick="toggle('left')">Toggle Left Form</button>
-          <button onclick="toggle('right')">Toggle Right Box</button>
+    <div class="main-content">
+      <div class="container">
+        <div class="panel left" id="leftPanel">Left Panel</div>
+        <div class="panel center" id="centerPanel">
+          <div class="center-content">
+            <button onclick="togglePanel('left')">Toggle Left Panel</button>
+            <button onclick="togglePanel('right')">Toggle Right Panel</button>
+          </div>
         </div>
-        <div class="box">
-          <button onclick="toggle('left')">Toggle Left Form</button>
-          <button onclick="toggle('right')">Toggle Right Box</button>
-        </div>
-        <!-- Add more as needed -->
-      </div>
-
-      <div id="rightPanel" class="right hidden">
-        <p>This is the right box.</p>
+        <div class="panel right" id="rightPanel">Right Panel</div>
       </div>
     </div>
 
     <script>
-      function toggle(side) {
-        const panel = document.getElementById(`${side}Panel`);
-        panel.classList.toggle("visible");
+      function togglePanel(side) {
+        const panel = document.getElementById(side + "Panel");
         panel.classList.toggle("hidden");
       }
     </script>

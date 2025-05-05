@@ -1,0 +1,23 @@
+.reviews-list-column ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.reviews-list-column li {
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #000000;
+  padding-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* for wrapping long comments */
+.reviews-list-column ul,
+.reviews-list-column li,
+.reviews-list-column p {
+  word-wrap: break-word; /* older support */
+  overflow-wrap: break-word; /* modern support */
+  word-break: break-word; /* breaks words anywhere if needed */
+  white-space: normal; /* ensures text wraps instead of staying on one line */
+  max-width: 100%;
+}

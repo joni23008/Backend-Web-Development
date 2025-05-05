@@ -1,10 +1,12 @@
-// Toggle Review Form Visibility (left column)
 function toggleReviewForm(id) {
   const form = document.getElementById(`review-form-${id}`);
-  form.classList.toggle("visible");
+  if (form.classList.contains("visible")) {
+    form.classList.remove("visible");
+  } else {
+    form.classList.add("visible");
+  }
 }
 
-// Show Reviews and Fetch If Needed (right column)
 document.addEventListener("click", async (event) => {
   if (event.target.matches(".api-button")) {
     const endpoint = event.target.dataset.endpoint;
@@ -16,13 +18,12 @@ document.addEventListener("click", async (event) => {
       return;
     }
 
-    // Toggle visibility if already loaded
     if (targetElement.dataset.loaded === "true") {
       targetElement.classList.toggle("visible");
       return;
     }
 
-    targetElement.classList.add("visible"); // Show while loading
+    targetElement.classList.remove("visible");
 
     try {
       const response = await fetch(endpoint);
@@ -31,7 +32,8 @@ document.addEventListener("click", async (event) => {
       const data = await response.json();
 
       displayResponse(targetElement, data);
-      targetElement.dataset.loaded = "true"; // Mark as loaded
+      targetElement.dataset.loaded = "true";
+      targetElement.classList.add("visible");
     } catch (error) {
       console.error("Fetch error:", error);
       displayError(targetElement, error);
@@ -39,7 +41,6 @@ document.addEventListener("click", async (event) => {
   }
 });
 
-// Render Review Items
 function displayResponse(targetElement, data) {
   if (!data || !data.data || data.data.length === 0) {
     targetElement.innerHTML = "<p>No reviews available.</p>";
@@ -50,16 +51,17 @@ function displayResponse(targetElement, data) {
   const listItems = reviews
     .map((item) => {
       const user = item.user?.username || "Unknown User";
-      const rating = item.rating || "No rating";
+      // const rating = item.rating || "No rating";
+      const rating = parseInt(item.rating) || 0;
+      const stars = "⭐".repeat(rating);
       const comment = item.comment || "No comment";
       const createdAt = item.createdAt || "Unknown";
       const updatedAt = item.updatedAt || "Unknown";
 
       return `
-        <li style="margin-bottom: 1rem; border-bottom: 1px solid #ccc; padding-bottom: 0.5rem;">
-          <p><strong>User:</strong> ${user}</p>
-          <p><strong>Rating:</strong> ${rating}</p>
-          <p><strong>Comment:</strong> ${comment}</p>
+        <li>
+          <p><strong>${user} | ${stars}</strong></p>
+          <p>${comment}</p>
           <p><small>Created: ${createdAt}</small></p>
           <p><small>Updated: ${updatedAt}</small></p>
         </li>
@@ -67,10 +69,9 @@ function displayResponse(targetElement, data) {
     })
     .join("");
 
-  targetElement.innerHTML = `<ul style="list-style: none; padding-left: 0;">${listItems}</ul>`;
+  targetElement.innerHTML = `<ul>${listItems}</ul>`;
 }
 
-// Show Error in Target Element
 function displayError(targetElement, error) {
   targetElement.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
 }

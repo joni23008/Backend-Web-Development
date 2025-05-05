@@ -1,0 +1,16 @@
+.submit-btn,
+.api-button {
+  background-color: #c8dba2;
+  color: #000000;
+  padding: 0.6rem 1rem;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  width: 11em;
+}
+
+.submit-btn:hover,
+.api-button:hover {
+  background-color: #8a9770;
+  color: #eeffcd;
+}

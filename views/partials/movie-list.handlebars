@@ -1,23 +1,42 @@
 {{#each movies}}
+<div class="main-content" id="movie-{{_id}}">
   <div class="movie-container">
-    <!-- Left: Review Form (hidden but space reserved) -->
     <div id="review-form-{{_id}}" class="review-form-column">
       {{> review-form movieId=_id }}
     </div>
-
-    <!-- Center: Movie Card -->
     <div class="movie-card">
       <h2><strong>{{title}}</strong></h2>
       <p><i>Release Date: {{release_date}}</i></p>
       <p><i>Genres: {{genre_names}}</i></p>
       <p style="overflow-y: auto;">{{overview}}</p>
-
-      <button onclick="toggleReviewForm('{{_id}}')">Write Review</button>
-      <button class="api-button" data-endpoint="/review/movie/{{_id}}" data-target="#reviews-list-{{_id}}">Show All Reviews</button>
+      <!-- Write Review Button with screen reader accessible label -->
+      {{!-- <button class="submit-btn" onclick="toggleReviewForm('{{_id}}')">Write Review</button> --}}
+      <button
+        class="submit-btn"
+        onclick="toggleReviewForm('{{_id}}')"
+        aria-label="Show review form for {{title}}"
+        aria-expanded="false"
+        aria-controls="review-form-{{_id}}"
+      >
+        Write Review
+      </button>
+      <!-- Show All Reviews Button with screen reader label -->
+      {{!-- <button class="api-button" data-endpoint="/review/movie/{{_id}}" data-target="#reviews-list-{{_id}}">Show All Reviews</button> --}}
+      <button
+        class="api-button"
+        data-endpoint="/review/movie/{{_id}}"
+        data-target="#reviews-list-{{_id}}"
+        aria-label="Show all reviews for {{title}}"
+        aria-expanded="false"
+        aria-controls="reviews-list-{{_id}}"
+      >
+        Show All Reviews
+      </button>
     </div>
-
-    <!-- Right: Review List -->
     <div id="reviews-list-{{_id}}" class="reviews-list-column"></div>
   </div>
+</div>
 {{/each}}
+
+
 

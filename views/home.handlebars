@@ -13,6 +13,8 @@
     read the reviews,  
     or write your own.<br><br>
 
+    If you have a movie in mind, use the <strong>"Search bar"</strong> to find it quickly!<br><br>
+
     Click the <strong>"Write Review"</strong> button to submit your review,  
     or click <strong>"Show All Reviews"</strong> to view all the reviews for that film.<br><br>
 
@@ -23,9 +25,6 @@
   </p>
 </section>
 
-
-
-  
 {{else}}  <!-- If no user is logged in -->
 <section class="home-introduction">  
   <h1>Welcome, Guest!</h1>
@@ -39,6 +38,8 @@
     read the reviews,  
     or write your own.<br><br>
 
+    If you have a movie in mind, use the <strong>"Search bar"</strong> to find it quickly!<br><br>
+
     Click the <strong>"Write Review"</strong> button to submit your review,  
     or click <strong>"Show All Reviews"</strong> to view all the reviews for that film.<br><br>
 
@@ -51,4 +52,7 @@
 
 {{/if}}
 
-<main>{{>movie-list}}</main>
+<main>
+  {{>searchbar}}
+  {{>movie-list}}
+</main>
