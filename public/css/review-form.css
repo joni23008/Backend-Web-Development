@@ -1,16 +1,16 @@
-.form-group {
+.review-form-group {
   margin-bottom: 1rem;
 }
 
-label {
+.review-form-group label {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: bold;
 }
 
-input,
-textarea,
-select {
+.review-form-group input,
+.review-form-group textarea,
+.review-form-group select {
   width: 100%;
   padding: 0.5rem;
   border: 2px solid #fff6f6;
