@@ -55,6 +55,10 @@
   margin: 0;
 }
 
+.movie-card .movie-overview {
+  font-size: 22px;
+}
+
 .reviews-list-column {
   /* top | right | bottom | left */
   padding: 2em 0 0 2em;
