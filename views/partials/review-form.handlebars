@@ -3,8 +3,8 @@
   <input type="hidden" name="movie" value="{{movieId}}" />
 
   <div class="review-form-group">
-    <label for="rating">Rating (1–5):</label>
-    <select id="rating" name="rating" required>
+    <label for="rating-{{movieId}}">Rating (1–5):</label>
+    <select id="rating-{{movieId}}" name="rating" required>
       <option value="" disabled selected>Select rating</option>
       <option value="1">⭐</option>
       <option value="2">⭐⭐</option>
@@ -15,14 +15,13 @@
   </div>
 
   <div class="review-form-group">
-    <label for="comment">Comment:</label>
+    <label for="comment-{{movieId}}">Comment:</label>
     <textarea
-      id="comment"
+      id="comment-{{movieId}}"
       name="comment"
       rows="4"
       placeholder="Write your review..."
       required
-      aria-label="Write your review"
     ></textarea>
   </div>
 
