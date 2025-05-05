@@ -1,18 +1,24 @@
+
 {{> messages}} <!-- This is for flash messages(success, error, info)-->
 
 <h1>Register</h1>
+<div class="register-form" aria-label="Registration form">
+  <form action="/auth/register" method="POST">
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input type="text" name="username" id="username" required aria-required="true">
+      <br>
+    </div> 
 
-<form action="/auth/register" method="POST">
-  <label for="username">Username:</label>
-  <input type="text" name="username" required>
-  <br>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input id="password" type="password" name="password" aria-required="true">
+      <br>
+    </div>
+    <button type="submit">Register</button>
     
-  <label for="password">Password:</label>
-  <input type="password" name="password" required>
-  <br>
-    
-  <button type="submit">Register</button>
-</form>
+  </form>
+</div>
 
 <p>Already have an account? <a href="/auth/login">Login</a></p>
 
