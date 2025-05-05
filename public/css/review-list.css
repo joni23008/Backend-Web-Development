@@ -10,3 +10,14 @@
   padding-bottom: 0.5rem;
   font-size: 0.9rem;
 }
+
+/* for wrapping long comments */
+.reviews-list-column ul,
+.reviews-list-column li,
+.reviews-list-column p {
+  word-wrap: break-word; /* older support */
+  overflow-wrap: break-word; /* modern support */
+  word-break: break-word; /* breaks words anywhere if needed */
+  white-space: normal; /* ensures text wraps instead of staying on one line */
+  max-width: 100%;
+}

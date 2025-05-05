@@ -1,0 +1,40 @@
+.searchbar {
+  position: relative;
+  max-width: 80ch;
+  width: 100%;
+  margin: 2em auto; /* centers horizontally */
+}
+
+#movie-search {
+  padding: 0.75em;
+  width: 100%;
+  font-size: 1rem;
+  box-sizing: border-box;
+  background-color: #fff6f6;
+}
+
+.suggestions-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #fff6f6;
+  color: #000000;
+  max-height: 150px;
+  overflow-y: auto;
+  overflow-x: hidden; /* ⛔️ prevents horizontal scroll */
+  box-sizing: border-box;
+  z-index: 10;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.suggestion-item {
+  padding: 0.5em;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background-color: #d6cece;
+}
