@@ -37,6 +37,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
       suggestions.appendChild(li);
     });
+    const status = document.getElementById("search-status");
+    if (matches.length > 0) {
+      const titles = matches.map((m) => m.title).join(", ");
+      status.textContent = `${matches.length} movie${
+        matches.length === 1 ? "" : "s"
+      } found: ${titles}.`;
+    } else {
+      status.textContent = "No movies found.";
+    }
   });
 
   input.addEventListener("keydown", (e) => {
@@ -62,11 +71,18 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function setActive(items) {
+    const status = document.getElementById("search-status");
+
     items.forEach((item, idx) => {
       if (idx === currentFocusIndex) {
         item.classList.add("active");
         input.setAttribute("aria-activedescendant", item.id); // For screen readers
         item.scrollIntoView({ block: "nearest" });
+
+        // 🔊 Update live region to announce the active suggestion
+        status.textContent = `Suggestion ${idx + 1} of ${items.length}: ${
+          item.textContent
+        }`;
       } else {
         item.classList.remove("active");
       }
