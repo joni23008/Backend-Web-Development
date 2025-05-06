@@ -9,6 +9,7 @@ const bcrypt = require('bcryptjs');
 router.get('/', isAuthenticated, async (req, res) => {
     try {
       const user = req.user.toObject();
+      delete user.password;
       
       if(user.role === 'admin') {
         const allReviews = await Review.find().populate('user').populate('movie').lean();
