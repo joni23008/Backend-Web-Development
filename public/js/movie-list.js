@@ -42,34 +42,50 @@ document.addEventListener("click", async (event) => {
 });
 
 function displayResponse(targetElement, data) {
+  const announcement = document.getElementById("review-announcement");
+
   if (!data || !data.data || data.data.length === 0) {
     targetElement.innerHTML = "<p>No reviews available.</p>";
+    announcement.textContent = "No reviews found for this movie.";
     return;
   }
 
   const reviews = data.data;
-  const listItems = reviews
+  const listItemsHtml = reviews
     .map((item) => {
       const user = item.user?.username || "Unknown User";
-      // const rating = item.rating || "No rating";
       const rating = parseInt(item.rating) || 0;
       const stars = "⭐".repeat(rating);
       const comment = item.comment || "No comment";
-      const createdAt = item.createdAt || "Unknown";
-      const updatedAt = item.updatedAt || "Unknown";
 
       return `
         <li>
           <p><strong>${user} | ${stars}</strong></p>
           <p>${comment}</p>
-          <p><small>Created: ${createdAt}</small></p>
-          <p><small>Updated: ${updatedAt}</small></p>
         </li>
       `;
     })
     .join("");
 
-  targetElement.innerHTML = `<ul>${listItems}</ul>`;
+  // Render HTML visually
+  targetElement.innerHTML = `<ul>${listItemsHtml}</ul>`;
+
+  // Create accessible plain text version for screen reader announcement
+  const reviewText = reviews
+    .map((item) => {
+      const user = item.user?.username || "Unknown User";
+      const rating = parseInt(item.rating) || 0;
+      const stars = rating
+        ? `${rating} star${rating === 1 ? "" : "s"}`
+        : "No rating";
+      const comment = item.comment || "No comment";
+      return `${user}, ${stars}: ${comment}`;
+    })
+    .join(". ");
+
+  announcement.textContent = `${reviews.length} review${
+    reviews.length === 1 ? "" : "s"
+  }: ${reviewText}.`;
 }
 
 function displayError(targetElement, error) {
