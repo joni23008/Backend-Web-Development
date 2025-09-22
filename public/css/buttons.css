@@ -1,18 +1,19 @@
 .movie-card .submit-btn,
 .movie-card .api-button,
 .review-form .submit-btn {
-  background-color: #cc0000;
+  background-color: #4e5577;
   color: #fff6f6;
   padding: 0.6rem 1rem;
   border: none;
   cursor: pointer;
   font-weight: bold;
   width: 11em;
+  border-radius: 15px;
 }
 
 .movie-card .submit-btn:hover,
 .movie-card .api-button:hover,
 .review-form .submit-btn:hover {
-  background-color: #a30000;
+  background-color: #2d64ac;
   color: #fff6f6;
 }
