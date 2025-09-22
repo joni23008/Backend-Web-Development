@@ -1,5 +1,5 @@
 body {
-  background-color: #fff0a1;
+  background-color: #646464;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -12,12 +12,14 @@ colors {
   color: #c8dba2;
   color: #c2d2c6;
   color: #000000;
+  color: #646464;
+  color: #a3a3a3;
 }
 /* navbar */
 nav {
   position: sticky;
   top: 0;
-  background-color: #ffdcb5;
+  background-color: #a3a3a3;
   padding: 1em;
   text-transform: uppercase;
   color: #000000;
@@ -41,7 +43,7 @@ nav a {
   color: #000000;
 }
 nav a:hover {
-  color: #3b3b3b;
+  color: #ffffff;
   text-decoration: underline;
 }
 

@@ -12,8 +12,10 @@
   font-size: 2.5em; /* Font size for the main heading */
   max-width: 80ch; /* Controls line length for readability */
   margin: 5px 0 5px 0;
+  color:rgb(255, 255, 255)
 }
 .home-introduction p {
   max-width: 80ch; /* Controls line length for readability */
   margin: 5px 0 5px 0;
+  color:rgb(255, 255, 255)
 }
