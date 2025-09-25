@@ -5,7 +5,8 @@ const tmdbMovieSchema = new mongoose.Schema({
   title:        { type: String, required: true },
   release_date: { type: String                },
   overview:     { type: String              },
-  genre_ids:    { type: [Number], default: [] }
+  genre_ids:    { type: [Number], default: [] },
+  posters:      { type: [String], default: [] }
 }, {
   collection: 'Movies'
 });

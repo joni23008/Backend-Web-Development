@@ -4,7 +4,7 @@ const TmdbMovie = require('../models/TmdbMovie');
 /**
  * Fetches page=1 of TMDB "popular", upserts into Mongo
  */
-async function importPopular(reqOrPage, res, next) {
+/* async function importPopular(reqOrPage, res, next) {
   // allow both (req, res, next) or (pageNumber)
   const page = typeof reqOrPage === 'number'
     ? reqOrPage
@@ -52,7 +52,74 @@ async function importPopular(reqOrPage, res, next) {
     if (next) return next(err);
     throw err;
   }
+} */
+async function fetchPosters(movieId) {
+  const { data } = await axios.get(
+    `https://api.themoviedb.org/3/movie/${movieId}/images`,
+    {
+      params: { include_image_language: 'en', language: 'en' },
+      headers: {
+        Authorization: `Bearer ${process.env.TMDB_BEARER}`, // v4 Bearer token
+        accept: 'application/json'
+      }
+    }
+  );
+  return data.posters.map(p => p.file_path);
 }
+
+async function importPopular(reqOrPage, res, next) {
+  const page = typeof reqOrPage === 'number'
+    ? reqOrPage
+    : parseInt(reqOrPage.query.page, 10) || 1;
+
+  try {
+    const { data } = await axios.get(
+      'https://api.themoviedb.org/3/movie/popular',
+      {
+        params: {
+          api_key: process.env.TMDB_API_KEY,
+          language: 'en-US',
+          page
+        }
+      }
+    );
+
+    // fetch posters for all movies in parallel
+    const ops = await Promise.all(
+      data.results.map(async m => {
+        const posters = await fetchPosters(m.id);
+        return {
+          updateOne: {
+            filter: { tmdbId: m.id },
+            update: {
+              tmdbId:       m.id,
+              title:        m.title,
+              release_date: m.release_date,
+              overview:     m.overview,
+              genre_ids:    m.genre_ids,
+              posters      // <-- add poster paths
+            },
+            upsert: true
+          }
+        };
+      })
+    );
+
+    const result = await TmdbMovie.bulkWrite(ops);
+
+    if (res && typeof res.json === 'function') {
+      return res.json({
+        imported: result.upsertedCount,
+        updated:  result.modifiedCount
+      });
+    }
+    return result;
+  } catch (err) {
+    if (next) return next(err);
+    throw err;
+  }
+}
+
 
 /**
  * Reads back all stored movies from Mongo
@@ -68,4 +135,5 @@ async function listStored(req, res, next) {
   }
 }
 
-module.exports = { importPopular, listStored };
+module.exports = { importPopular, listStored, fetchPosters };
+

@@ -8,6 +8,14 @@
       <h2><strong>{{title}}</strong></h2>
       <p><i>Release Date: {{release_date}}</i></p>
       <p><i>Genres: {{genre_names}}</i></p>
+      {{#if posters}}
+      
+  <img 
+    src="https://image.tmdb.org/t/p/original/{{posters.[0]}}" 
+    alt="Poster of {{title}}" 
+    style="max-width: 20%; height: auto; border-radius: 10px;"
+  >
+{{/if}}
       <p style="overflow-y: auto;" class="movie-overview">{{overview}}</p>
       <!-- Write Review Button with screen reader accessible label -->
       {{!-- <button class="submit-btn" onclick="toggleReviewForm('{{_id}}')">Write Review</button> --}}
