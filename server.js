@@ -5,9 +5,11 @@ const path = require("path");
 const session = require("express-session");
 const passport = require("passport");
 const flash = require("connect-flash");
+// const cors = require("cors"); // only needed if using emulators or expo web or something
 require("dotenv").config();
 
 const app = express();
+// app.use(cors()); // only needed if using emulators or expo web or something
 
 // DB connection
 require("./config/db")();
