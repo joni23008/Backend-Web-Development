@@ -20,9 +20,9 @@
   }
   
   #admin-dashboard  .review-card {
-    background-color: #ffdcb5;
+    background-color: #a3a3a3;
     border: 1px solid #000000;
-    border-radius: 8px;
+    border-radius: 15px;
     padding: 1rem;
     width: calc(33.333% - 1rem);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -46,7 +46,7 @@
     background-color: #cc0000;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 15px;
     cursor: pointer;
     max-width: 150px;
     width: 80%;
