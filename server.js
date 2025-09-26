@@ -5,11 +5,9 @@ const path = require("path");
 const session = require("express-session");
 const passport = require("passport");
 const flash = require("connect-flash");
-const cors = require("cors"); // allow React Native to connect
 require("dotenv").config();
 
 const app = express();
-app.use(cors()); // allow React Native to connect
 
 // DB connection
 require("./config/db")();
@@ -18,7 +16,7 @@ require("./config/db")();
 require("./config/passport")(passport);
 
 // Flash middleware
-const flashMiddleware = require('./middlewares/flash');
+const flashMiddleware = require("./middlewares/flash");
 
 // Body parsers
 app.use(express.urlencoded({ extended: true }));
@@ -36,8 +34,8 @@ app.use(
     cookie: {
       httpOnly: true,
       secure: false,
-      sameSite: 'lax'
-    }
+      sameSite: "lax",
+    },
   })
 );
 
