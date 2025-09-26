@@ -5,9 +5,11 @@ const path = require("path");
 const session = require("express-session");
 const passport = require("passport");
 const flash = require("connect-flash");
+const cors = require("cors"); // allow React Native to connect
 require("dotenv").config();
 
 const app = express();
+app.use(cors()); // allow React Native to connect
 
 // DB connection
 require("./config/db")();
