@@ -329,8 +329,3 @@ module.exports = {
   deleteReviewById,
   deleteReviewsByUser,
 };
-
-// Duplicate-ish codes:
-// responses for GET, POST, PATCH, DELETE requests
-// debugging console logs
-// check if no review was found with the given ID (or it didn’t exist)
