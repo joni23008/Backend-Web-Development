@@ -220,6 +220,40 @@ const deleteReviewById = async (req, res) => {
   }
 };
 
+// DELETE - remove all reviews by a user
+const deleteReviewsByUser = async (req, res) => {
+  try {
+    console.log("[deleteReviewsByUser] 🔧 Deleting...");
+
+    // find all reviews by user
+    const userReviews = await Review.find({ user: req.params.userId });
+    // check if no reviews were found
+    if (!userReviews || userReviews.length === 0) {
+      console.log("[deleteReviewsByUser] ⚠️ No reviews found for this user");
+      return res.status(404).json({ message: "Not found" });
+    }
+
+    // delete all reviews for that user
+    await Review.deleteMany({ user: req.params.userId });
+
+    console.log("[deleteReviewsByUser] ✅ Deleted:", req.params.userId);
+
+    // response
+    res.status(200).json({
+      success: true,
+      message: `DELETE request completed successfully, ${userReviews.length} review(s) deleted for this user`,
+      data: userReviews, // returning the deleted reviews populated
+    });
+  } catch (err) {
+    console.error("[deleteReviewsByUser] ❌ Error:", err);
+    res.status(500).json({
+      success: false,
+      message: "DELETE request failed",
+      error: err.message,
+    });
+  }
+};
+
 // ====================================================================================================
 // POST add new, does not work with Postman, becuse of the session/cookie
 const createReviewOld = async (req, res) => {
@@ -293,6 +327,7 @@ module.exports = {
   createReview,
   updateReviewById,
   deleteReviewById,
+  deleteReviewsByUser,
 };
 
 // Duplicate-ish codes:
