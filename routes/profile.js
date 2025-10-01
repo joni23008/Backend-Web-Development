@@ -20,7 +20,6 @@ router.get("/", isAuthenticated, async (req, res) => {
       });
     }
 
-    // täs vois käyttää mun ReviewControllerin endpointtia kaikkien arvioiden hakemiseen käyttäjän mukaan
     const reviews = await Review.find({ user: user._id }).populate("movie").lean();
     console.log(reviews);
     res.render("profile", {
@@ -48,7 +47,6 @@ router.post("/delete", isAuthenticated, async (req, res) => {
       return res.redirect("/profile");
     }
 
-    // täs voi mun ReviewControllerin endpointtia kaikkien käyttäjän arvioiden poistamiseen
     await Review.deleteMany({ user: req.user._id });
     await User.findByIdAndDelete(req.user._id);
 
