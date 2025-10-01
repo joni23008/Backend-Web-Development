@@ -123,7 +123,9 @@ const createReview = async (req, res) => {
     console.log("[createReview] 🔧 Creating...");
     // extract review data from the form/request, attach user(auth/passport), create Review-object, and save to DB
     const { movie, rating, comment } = req.body;
-    const user = req.user._id;
+    // const user = req.user._id;
+    const user = req.user._id || req.user.id;
+    console.log("[createReview] user:", user);
     const newReview = new Review({
       user, // expects a valid user ID as a string
       movie, // expects a valid movie ID as a string
@@ -132,6 +134,7 @@ const createReview = async (req, res) => {
     });
     await newReview.save();
     console.log("[createReview] ✅ Created:", newReview);
+
     // response, in json if X-Requested-From is equal to mobile
     if (req.get("X-Requested-From") === "mobile") {
       return res.status(200).json({
