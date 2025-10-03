@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const cors = require('cors');
+const cors = require("cors");
 
 const homeRoutes = require("./homeRoutes");
 const authRoutes = require("./auth");
@@ -10,6 +10,7 @@ const apiRoutes = require("./api");
 const mobileAuthRoutes = require("./mobileAuth");
 const CategoryRoutes = require("./category");
 const GenresRoutes = require("./Genres");
+const RecommendedRoutes = require("./recommendedRoutes");
 
 router.use(cors());
 router.use("/", homeRoutes);
@@ -20,5 +21,6 @@ router.use("/mobileAuth", mobileAuthRoutes);
 router.use("/", apiRoutes);
 router.use("/category", CategoryRoutes);
 router.use("/genres", GenresRoutes);
+router.use("/recommended", RecommendedRoutes);
 
 module.exports = router;
