@@ -54,8 +54,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-module.exports = router;
-
 // GET - recommendations by movie genres and average ratings, only for logged-in users
 // testing: http://localhost:5000/recommended/user/?genreIds=27
 // testing: http://localhost:5000/recommended/user/?genreIds=28&genreIds=12
