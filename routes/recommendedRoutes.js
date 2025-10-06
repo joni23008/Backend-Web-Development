@@ -21,7 +21,6 @@
 const express = require("express");
 const router = express.Router();
 const { isAuthenticated } = require("../middlewares/auth");
-const { fetchMoviesWithGenres, fetchAllReviews } = require("../services/recommendedService");
 
 // GET - 10 random movie recommendations, for everyone
 // testing: http://localhost:5000/recommended/
