@@ -64,18 +64,23 @@ const readReviewsByMovie = async (req, res) => {
       .populate("user", "username -_id")
       .populate("movie", "title -_id");
     // check if no review was found with the given ID (or it didn’t exist)
-    if (!reviews || reviews.length === 0) {
+    if (reviews.length > 0) {
+      console.log("[readReviewsByMovie] ✅ Fetched:", reviews.length);
+      return res.status(200).json({
+        success: true,
+        message: "GET request completed successfully, all reviews found",
+        total: reviews.length,
+        data: reviews,
+      });
+    } else {
       console.log("[readReviewsByMovie] ⚠️ No reviews found for this movie");
-      return res.status(404).json({ message: "Not found" });
+      return res.status(200).json({
+        success: true,
+        message: "No reviews found",
+        total: 0,
+        data: [],
+      });
     }
-    console.log("[readReviewsByMovie] ✅ Fetched:", reviews.length);
-    // response
-    res.status(200).json({
-      success: true,
-      message: "GET request completed successfully, all reviews found",
-      total: reviews.length,
-      data: reviews,
-    });
   } catch (err) {
     console.error("[readReviewsByMovie] ❌ Error:", err);
     res.status(500).json({
@@ -95,18 +100,23 @@ const readReviewsByUser = async (req, res) => {
       .populate("user", "username -_id")
       .populate("movie", "title -_id");
     // check if no review was found with the given ID (or it didn’t exist)
-    if (!reviews || reviews.length === 0) {
+    if (reviews.length > 0) {
+      console.log("[readReviewsByUser] ✅ Fetched:", reviews.length);
+      return res.status(200).json({
+        success: true,
+        message: "GET request completed successfully, all reviews found",
+        total: reviews.length,
+        data: reviews,
+      });
+    } else {
       console.log("[readReviewsByUser] ⚠️ No reviews found for this user");
-      return res.status(404).json({ message: "Not found" });
+      return res.status(200).json({
+        success: true,
+        message: "No reviews found",
+        total: 0,
+        data: [],
+      });
     }
-    console.log("[readReviewsByUser] ✅ Fetched:", reviews.length);
-    // response
-    res.status(200).json({
-      success: true,
-      message: "GET request completed successfully, all reviews found",
-      total: reviews.length,
-      data: reviews,
-    });
   } catch (err) {
     console.error("[readReviewsByUser] ❌ Error:", err);
     res.status(500).json({
